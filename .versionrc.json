@@ -1,0 +1,14 @@
+{
+  "types": [
+    {"type": "feat", "section": "Features"},
+    {"type": "fix", "section": "Bug Fixes"},
+    {"type": "chore", "hidden": true},
+    {"type": "docs", "hidden": true},
+    {"type": "style", "hidden": true},
+    {"type": "refactor", "hidden": true},
+    {"type": "perf", "hidden": true},
+    {"type": "test", "hidden": true}
+  ],
+  "commitUrlFormat": "http://10.128.198.29:8888/phm-web/train-technical-regulations-management/-/commit/{{hash}}",
+  "compareUrlFormat": "http://10.128.198.29:8888/phm-web/train-technical-regulations-management/-/compare/{{previousTag}}...{{currentTag}}"
+}

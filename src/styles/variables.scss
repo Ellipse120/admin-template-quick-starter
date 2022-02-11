@@ -1,0 +1,26 @@
+// sidebar
+$menuText:#ffffff;
+$menuActiveText:#0079fe;
+$subMenuActiveText:#f4f4f5;
+
+$menuBg:#0f4c81;
+$menuHover:#3f4244;
+
+$subMenuBg:#222222;
+$subMenuHover: #3f4244;
+
+$scrollbarBgColor: #797777;
+
+$sideBarWidth: 210px;
+
+:export {
+  menuText: $menuText;
+  menuActiveText: $menuActiveText;
+  subMenuActiveText: $subMenuActiveText;
+  menuBg: $menuBg;
+  menuHover: $menuHover;
+  subMenuBg: $subMenuBg;
+  subMenuHover: $subMenuHover;
+  scrollbarBgColor: $scrollbarBgColor;
+  sideBarWidth: $sideBarWidth;
+}

@@ -1,0 +1,40 @@
+{
+  "workspaces": [
+    "packages/*",
+    "src/*"
+  ],
+  "version": "0.1.0",
+  "npmClient": "npm",
+  "command": {
+    "version": {
+      "allowBranch": [
+        "master"
+      ],
+      "message": "chore(release): publish %s",
+      "ignoreChanges": [
+        "**/*.md"
+      ]
+    },
+    "publish": {
+      "ignoreChanges": [
+        "ignored-file",
+        "*.md"
+      ],
+      "message": "chore(release): publish"
+    },
+    "bootstrap": {
+      "ignore": "component-*",
+      "npmClientArgs": [
+        "--no-package-lock"
+      ]
+    },
+    "changelog": {
+      "labels": {
+        "feat": ":rocket: New Feature",
+        "bug": ":bug: fix bug",
+        "doc": ":memo: Documentation",
+        "breaking": ":boom: Breaking Change"
+      }
+    }
+  }
+}
