@@ -41,25 +41,11 @@ const menuTypes = [
   { key: 'BUTTON', value: '按钮' }
 ]
 
-const fixTypes = [
-  { key: '三级修', value: '三级修' },
-  { key: '四级修', value: '四级修' },
-  { key: '五级修', value: '五级修' }
+const genderOptions = [
+  { key: '女', value: '女' },
+  { key: '男', value: '男' },
+  { key: '其他', value: '其他' }
 ]
-const fixMethods = [
-  { key: '架车', value: '架车' },
-  { key: '解编', value: '解编' }
-]
-
-const edgeTypeMapper = {
-  'SUB': 'SUB',
-  'DIR': 'DIR'
-}
-
-const partTypeMapper = {
-  'A': 'A',
-  'C': 'C'
-}
 
 const state = {
   boolNumList,
@@ -69,10 +55,7 @@ const state = {
   menuTypes,
   departmentList,
   userList,
-  fixTypes,
-  fixMethods,
-  edgeTypeMapper,
-  partTypeMapper
+  genderOptions
 }
 
 const mutations = {}

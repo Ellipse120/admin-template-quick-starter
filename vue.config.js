@@ -1,6 +1,6 @@
 'use strict'
 const path = require('path')
-const defaultSettings = require('@/project-config.js')
+const defaultSettings = require('./src/project-config.js')
 // const zlib = require('zlib')
 
 function resolve (dir) {
