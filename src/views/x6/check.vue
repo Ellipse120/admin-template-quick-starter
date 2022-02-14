@@ -1,7 +1,7 @@
 <template>
   <div class="h-full flex items-center" style="justify-content: flex-end;">
     <el-dropdown @command="handleCommand">
-      <el-button size="mini" icon="el-icon-more" style="padding: 5px; margin-right: 3px;" />
+      <el-button icon="el-icon-more" style="padding: 5px; margin-right: 3px;" />
       <el-dropdown-menu slot="dropdown">
         <el-dropdown-item v-for="item in selectList" :key="item.key" :command="item.key">{{ item.value }}</el-dropdown-item>
       </el-dropdown-menu>

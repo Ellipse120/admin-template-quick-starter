@@ -7,7 +7,7 @@
       <el-col :xs="12" :sm="6" :md="6" :lg="4" :xl="4">
         <el-input v-model="query.menuName" clearable placeholder="请输入菜单名称" title="菜单名称" />
       </el-col>
-      <el-col :xs="12" :sm="6" :md="6" :lg="6" :xl="6">
+      <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="8">
         <el-button icon="el-icon-close" @click="resetQuery">清空</el-button>
         <el-button type="primary" icon="el-icon-search" :loading="isLoading" @click="doSearch">查询</el-button>
         <el-button type="success" icon="el-icon-plus" @click="doAdd">添加</el-button>
@@ -22,53 +22,14 @@
       :height="tableHeight"
       :data="list"
     >
-      <el-table-column
-        type="index"
-        align="center"
-        label="序号"
-        width="50"
-      />
-      <el-table-column
-        prop="id"
-        align="center"
-        label="菜单ID"
-        width="60"
-      />
-      <el-table-column
-        prop="menuCode"
-        align="center"
-        label="菜单代码"
-        min-width="280"
-        class-name="col--color-green cell--menu-id"
-      />
-      <el-table-column
-        prop="menuEnName"
-        align="center"
-        label="菜单英文名称"
-        min-width="120"
-        class-name="cell--english-name"
-      />
-      <el-table-column
-        prop="menuName"
-        align="center"
-        label="菜单名称"
-        min-width="480"
-        class-name="col--color-cyan cell--menu-name"
-      />
-      <el-table-column
-        prop="menuType"
-        align="center"
-        label="菜单类型"
-        width="70"
-      />
-      <el-table-column
-        prop="parentId"
-        align="center"
-        label="上级菜单"
-        width="90"
-      />
-
-      <el-table-column type="expand" label="详情">
+      <el-table-column type="index" align="center" label="序号" width="80" />
+      <el-table-column prop="id" align="center" label="菜单ID" />
+      <el-table-column prop="menuCode" align="center" label="菜单代码" />
+      <el-table-column prop="menuEnName" align="center" label="菜单英文名称" />
+      <el-table-column prop="menuName" align="center" label="菜单名称" />
+      <el-table-column prop="menuType" align="center" label="菜单类型" />
+      <el-table-column prop="parentId" align="center" label="上级菜单" />
+      <el-table-column type="expand" align="center" label="详情" width="80">
         <template slot-scope="{ row }">
           <el-form label-position="left" class="table-row-details-list list-narrow">
             <el-form-item label="创建人"><span>{{ row.createBy }}</span></el-form-item>
@@ -85,14 +46,10 @@
         </template>
       </el-table-column>
 
-      <el-table-column
-        label="操作"
-        width="160"
-        align="center"
-      >
+      <el-table-column label="操作" align="center">
         <template slot-scope="scope">
-          <el-button type="primary" @click="doEdit(scope)">编辑</el-button>
-          <el-button type="danger" @click="doRemove(scope)">删除</el-button>
+          <el-button type="text" icon="el-icon-edit" @click="doEdit(scope)">编辑</el-button>
+          <el-button type="text" icon="el-icon-delete" @click="doRemove(scope)">删除</el-button>
         </template>
       </el-table-column>
     </el-table-wrapper>

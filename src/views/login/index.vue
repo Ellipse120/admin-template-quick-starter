@@ -44,7 +44,7 @@
         </el-input>
       </el-form-item>
 
-      <el-button class="full-width" :loading="loading" type="primary" size="default" @click.native.prevent="handleLogin">登陆</el-button>
+      <el-button class="full-width" :loading="loading" type="primary" @click.native.prevent="handleLogin">登陆</el-button>
     </el-form>
   </div>
 </template>

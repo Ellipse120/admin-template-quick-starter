@@ -1,5 +1,5 @@
 <template>
-  <div class="px-3">
+  <div>
     <div class="flex justify-center">
       <el-button v-for="item in sections" :key="item" @click="goTo(item)">{{ item }}</el-button>
 
@@ -45,7 +45,7 @@ export default {
   },
   data () {
     return {
-      nYear: 11,
+      nYear: 5,
       selectedDepts: [],
       thisYear: new Date().getFullYear(),
       depts: ['车辆部', '上海动车段', '南京动车段', '南京东动车段', '杭州北动车段', '合肥车辆段'],

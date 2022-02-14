@@ -30,7 +30,7 @@
 
     <el-form :model="model" label-width="100px" class="border p-2 bg-red-100">
       <el-form-item label="测试字段A">
-        <el-input v-model="model.a" size="medium" clearable />
+        <el-input v-model="model.a" clearable />
       </el-form-item>
     </el-form>
     <pre>model output: {{ model }}</pre>

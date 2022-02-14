@@ -1,3 +1,15 @@
+// custom theme
+$--color-primary: #0079FE;
+$--color-danger: #FF0000;
+$--font-path: '~element-ui/lib/theme-chalk/fonts';
+$--color-text-primary: #000000;
+$--color-text-regular: #666666;
+$--color-text-secondary: #262729;
+$--border-color-lighter: #ded7d7;
+
+@import '~element-ui/packages/theme-chalk/src/index.scss';
+@import '~element-ui/lib/theme-chalk/display.css';
+
 // cover some element-ui styles
 
 .el-breadcrumb__inner,

@@ -44,7 +44,7 @@
       <el-table-column label="操作" align="center">
         <template slot-scope="scope">
           <el-button-wrapper type="text" icon="el-icon-edit" @click="doEdit(scope)">编辑</el-button-wrapper>
-          <el-button-wrapper type="text" icon="el-icon-remove" @click="doRemove(scope)">删除</el-button-wrapper>
+          <el-button-wrapper type="text" icon="el-icon-delete" @click="doRemove(scope)">删除</el-button-wrapper>
         </template>
       </el-table-column>
     </el-table-wrapper>

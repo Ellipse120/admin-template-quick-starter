@@ -22,7 +22,7 @@
         <template slot-scope="scope">
           <operation-btn-groups>
             <el-button type="text" icon="el-icon-edit" @click="doEdit(scope)">编辑</el-button>
-            <el-button type="text" icon="el-icon-delete" @click="doViewInfo(scope)">查看</el-button>
+            <el-button type="text" icon="el-icon-view" @click="doViewInfo(scope)">查看</el-button>
             <el-button type="text" icon="el-icon-delete" @click="doRemove(scope)">删除</el-button>
           </operation-btn-groups>
         </template>

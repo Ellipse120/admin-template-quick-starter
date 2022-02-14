@@ -24,6 +24,7 @@
       :height="tableHeight"
       :data="list"
     >
+      <el-table-column type="index" label="序号" align="center" width="80" />
       <el-table-column label="大类编码" prop="dicKey" align="center" />
       <el-table-column label="大类名称" prop="dicValue" align="center" />
       <el-table-column label="子类编码" prop="dicType" align="center" />
@@ -31,7 +32,7 @@
       <el-table-column label="字典描述" prop="dicDescription" align="center" />
       <el-table-column label="操作" align="center">
         <template slot-scope="scope">
-          <el-button type="text" icon="el-icon-edit" size="mini" @click="doEdit(scope)">编辑</el-button>
+          <el-button type="text" icon="el-icon-edit" @click="doEdit(scope)">编辑</el-button>
         </template>
       </el-table-column>
     </el-table-wrapper>

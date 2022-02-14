@@ -27,9 +27,10 @@
       :height="tableHeight"
       :data="list"
     >
-      <el-table-column label="用户ID" prop="id" align="center" width="80" />
-      <el-table-column label="登陆名" prop="loginName" align="center" width="200" />
-      <el-table-column label="用户名" prop="username" align="center" width="220" />
+      <el-table-column type="index" label="序号" align="center" width="80" />
+      <el-table-column label="用户ID" prop="id" align="center" />
+      <el-table-column label="登陆名" prop="loginName" align="center" />
+      <el-table-column label="用户名" prop="username" align="center" />
       <el-table-column label="部门" prop="departmentName" align="center" min-width="130" />
       <el-table-column prop="roleKvs" align="center" label="角色" min-width="220">
         <template slot-scope="{ row }">
@@ -37,10 +38,9 @@
         </template>
       </el-table-column>
 
-      <el-table-column label="邮箱" prop="email" align="center" min-width="220" />
-      <el-table-column label="电话" prop="mobile" align="center" width="140" />
-
-      <el-table-column type="expand" label="详情">
+      <el-table-column label="邮箱" prop="email" align="center" />
+      <el-table-column label="电话" prop="mobile" align="center" />
+      <el-table-column type="expand" label="详情" align="center" width="80">
         <template slot-scope="{ row }">
           <el-descriptions :column="4" class="px-4">
             <el-descriptions-item label="创建人">{{ row.createBy }}</el-descriptions-item>
@@ -51,13 +51,13 @@
         </template>
       </el-table-column>
 
-      <el-table-column label="操作" align="center" width="140">
+      <el-table-column label="操作" align="center">
         <template slot-scope="scope">
           <operation-btn-groups :btn-count="1">
-            <el-button-wrapper type="text" @click="doSetRole(scope)">配置角色</el-button-wrapper>
-            <el-button-wrapper type="text" @click="doEdit(scope)">编辑</el-button-wrapper>
-            <el-button-wrapper type="text" @click="doResetPassword(scope)">重置密码</el-button-wrapper>
-            <el-button-wrapper type="text" @click="doRemove(scope)">删除</el-button-wrapper>
+            <el-button-wrapper type="text" icon="el-icon-user" @click="doSetRole(scope)">配置角色</el-button-wrapper>
+            <el-button-wrapper type="text" icon="el-icon-edit" @click="doEdit(scope)">编辑</el-button-wrapper>
+            <el-button-wrapper type="text" icon="el-icon-warning" @click="doResetPassword(scope)">重置密码</el-button-wrapper>
+            <el-button-wrapper type="text" icon="el-icon-delete" @click="doRemove(scope)">删除</el-button-wrapper>
           </operation-btn-groups>
         </template>
       </el-table-column>
