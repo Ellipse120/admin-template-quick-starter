@@ -34,7 +34,7 @@
 import { title } from '@/project-config.js'
 import path from 'path'
 import { mapGetters } from 'vuex'
-import SidebarItemNew from './Sidebar/SidebarItemNew'
+import SidebarItemNew from './Sidebar/SidebarItemOfVertical'
 import variables from '@/styles/variables.scss'
 import { isExternal } from '@/utils/validate'
 import HeaderUser from './Sidebar/Header'

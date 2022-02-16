@@ -6,8 +6,10 @@ $subMenuActiveText:#f4f4f5;
 $menuBg:#0f4c81;
 $menuHover:#3f4244;
 
-$subMenuBg:#222222;
+$subMenuBg: #478ded;
 $subMenuHover: #3f4244;
+
+$logoBgColor: #1284f0;
 
 $scrollbarBgColor: #797777;
 
@@ -21,6 +23,7 @@ $sideBarWidth: 210px;
   menuHover: $menuHover;
   subMenuBg: $subMenuBg;
   subMenuHover: $subMenuHover;
+  logoBgColor: $logoBgColor;
   scrollbarBgColor: $scrollbarBgColor;
   sideBarWidth: $sideBarWidth;
 }

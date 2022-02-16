@@ -36,7 +36,6 @@ module.exports = {
         'ls': { min: '2560px' }
       },
       fontFamily: {
-        digit: ['font-digit']
       }
     }
   }

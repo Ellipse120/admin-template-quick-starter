@@ -5,7 +5,8 @@ export default {
   name: 'JSX',
   data () {
     return {
-      list: [1, 2],
+      options: ['option 1', 'option 2'],
+      list: [],
       model: {
         text: '',
         selectedVal: ''
@@ -14,36 +15,44 @@ export default {
   },
   methods: {
     add () {
-      this.list.push(random(1, 10000))
+      this.list.push({
+        id: random(1000, 9999),
+        text: this.model.text,
+        selectedVal: this.model.selectedVal
+      })
     },
     delete (index) {
       this.list.splice(index, 1)
     }
   },
   render () {
+    const noData = <el-empty />
+    const listContent = this.list.map((item, index) => {
+      return <li>
+        <div class='flex flex-row justify-around items-center border-2 my-2 divide-x divide-red-500 divide-x-4 hover:bg-gray-100'>
+          <div class='text-red-500 p-2 w-4/5'>{item.id} - {item.text} - {item.selectedVal} 🎉🎉🎉</div>
+          <div class='w-1/5 text-center cursor-pointer text-red-500 hover:text-purple-500 transition-all duration-2000' vOn:click={() => this.delete(index)}>Del</div>
+        </div>
+      </li>
+    })
+    const l = this.list.length ? listContent : noData
+
     return (
       <div class='flex items-center justify-center flex-col p-4'>
-        <div class='whitespace-pre-wrap'>{JSON.stringify(this.model, null, 2)}</div>
-        <div class='w-1/3 flex'>
+        <div class='flex justify-between'>
           <el-input vModel={this.model.text} />
-          <el-select vModel={this.model.selectedVal} clearable filterable>
+          <el-select class='mx-4' vModel={this.model.selectedVal} clearable filterable>
             {
-              this.list.map((item) => {
+              this.options.map((item) => {
                 return <el-option value={item} label={item} />
               })
             }
           </el-select>
+          <el-button type='success' vOn:click={this.add}>Add</el-button>
         </div>
-        <el-button type='success' vOn:click={this.add}>Add</el-button>
-        <ul class='w-1/2 text-center'>
-          {
-            this.list.map((item, index) => {
-              return <li class='flex'>
-                <div class='text-red-500 p-2 w-3/5'>{item} 🎉🎉🎉</div>
-                <el-button class='w-2/5' vOn:click={() => this.delete(index)}>Del</el-button>
-              </li>
-            })
-          }
+
+        <ul class='text-center w-1/2 my-4'>
+          {l}
         </ul>
       </div>
     )
