@@ -2,7 +2,7 @@
   <div class="gallary">
     <div>
       <div v-for="(item, index) in list" :key="index">
-        <img :src="item" :alt="item" class="item">
+        <img :src="$withBase(item)" :alt="item" class="item">
       </div> 
     </div>
   </div>
