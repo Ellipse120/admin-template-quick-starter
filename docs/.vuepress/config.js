@@ -3,11 +3,15 @@ module.exports = {
   description: 'A simple and beautiful vuepress blog',
   port: 8100,
   base: '/docs/',
+  markdown: {
+    lineNumbers: true
+  },
   themeConfig: {
+    logo: '/logo.png',
     nav: [
       { text: 'Home', link: '/' },
       { text: 'Guide', link: '/guide/' },
-      { text: 'External', link: 'https://google.com' }
+      { text: 'GitLab', link: 'https://google.com' }
     ],
     displayAllHeaders: true,
     smoothScroll: true,

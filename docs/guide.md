@@ -1,5 +1,12 @@
-# One Page
+# Home Page
+## Quick Starter Project for vue.js 2 :tada:.
 
-## what
+::: tip
+Vue.js 2 的基础项目。使用前请仔细阅读文档。
+:::
 
-![Logo](/logo.png)
+## Gallery
+
+<ClientOnly>
+  <gallary />
+</ClientOnly>

@@ -1,8 +1,13 @@
 # Editor integration
 
+- [WebStorm](#WebStorm)
 - [Visual Studio Code](#visual-studio-code)
   - [Configuration](#configuration)
 - [FAQ](#faq)
+
+## `WebStorm`
+
+For beginners, it's recommended to use [WebStorm](ftp://10.128.73.241/webstorm2021.2.2/). It's a great IDE with a great UI. It's also a great way to get started with Vue.js. Should config `Run eslint --fix on save` in `Languages & Frameworks -> JavaScript -> Code Quality Tools -> ESLint`.
 
 ## Visual Studio Code
 

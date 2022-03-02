@@ -1,5 +1,7 @@
 # Tests and mocking the API
 
+> Tesing components and views is nessary to ensure that the code is working as expected. But time is a valuable resource, and it's important to decide to spend time on dev or testing.
+
 - [Tests and mocking the API](#tests-and-mocking-the-api)
   - [Running all tests](#running-all-tests)
   - [Unit tests with Jest](#unit-tests-with-jest)
@@ -13,14 +15,13 @@
     - [Introduction to Cypress](#introduction-to-cypress)
     - [Accessibility-driven end-to-end tests](#accessibility-driven-end-to-end-tests)
   - [The mock API](#the-mock-api)
-    - [Mock authentication](#mock-authentication)
     - [Testing/developing against a real server](#testingdeveloping-against-a-real-server)
 
 ## Running all tests
 
 ```bash
 # Run all tests
-yarn test
+npm run test
 ```
 
 ## Unit tests with Jest
@@ -29,7 +30,7 @@ yarn test
 
 ```bash
 # Run unit tests
-yarn test:unit
+npm run test:unit
 
 # Run unit tests in watch mode
 yarn test:unit:watch
@@ -64,16 +65,6 @@ Jest offers many tools for mocks, including:
 - [For a dependency in `node_modules`](https://facebook.github.io/jest/docs/en/manual-mocks.html#mocking-node-modules), add the mock to `tests/unit/__mocks__`. You can see an example of this with the `axios` mock, which intercepts requests with relative URLs to either [our mock API](#the-mock-api) or a local/live API if the `API_BASE_URL` environment variable is set.
 
 ## End-to-end tests with Cypress
-
-### Running end-to-end tests
-
-```bash
-# Run end to end tests
-yarn test:e2e
-
-# Run the dev server with the Cypress client
-yarn dev:e2e
-```
 
 ### Introduction to Cypress
 
@@ -198,11 +189,7 @@ Working against the production API can be useful sometimes, but it also has some
 - Hitting the production API often means modifying the production database, which you typically don't want to do during automated tests.
 - To work on a frontend feature, the backend for it must already be complete.
 
-The mock API is an [Express](https://expressjs.com/) server in `tests/mock-api` you can extend to - you guessed it - mock what the real API would do, solving all the problems listed above. This solution is also backend-agnostic, making it ideal for a wide variety of projects.
-
-### Mock authentication
-
-See the [`users` resource](../tests/mock-api/resources/users.js) in the mock API for a list of usernames and passwords you can use in development.
+The mock API is an [MirageJS](https://miragejs.com/) server in `src/server.js` you can define own routes - you guessed it - mock what the real API would do, solving all the problems listed above. This solution is also backend-agnostic, making it ideal for a wide variety of projects. See the [Mock API Usage Demo](src/views/mirage-todos-demo) for more details.
 
 ### Testing/developing against a real server
 

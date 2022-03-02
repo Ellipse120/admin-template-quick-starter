@@ -1,9 +1,6 @@
 # Architecture
 
 - [Architecture](#architecture)
-  - [`.circleci`](#circleci)
-  - [`.vscode`](#vscode)
-  - [`.vuepress`](#vuepress)
   - [`docs`](#docs)
   - [`generators`](#generators)
   - [`public`](#public)
@@ -11,28 +8,19 @@
   - [`src`](#src)
     - [`assets`](#assets)
     - [`components`](#components)
-    - [`design`](#design)
+    - [`styles`](#styles)
     - [`router`](#router)
     - [`state`](#state)
     - [`utils`](#utils)
-    - [`app.config.json`](#appconfigjson)
-    - [`app.vue`](#appvue)
-    - [`main.js`](#mainjs)
+    - [`project-config.js`](#project-config)
+    - [`App.vue`](#App-vue)
+    - [`main.js`](#main-js)
+    - [`permission.js`](#permission-js)
   - [`tests`](#tests)
 
-## `.circleci`
-
-Configuration for continuous integration with [Circle CI](https://circleci.com/). See [the production doc](production.md#from-circle-ci) for more.
-
-## `.vscode`
-
-Settings and extensions specific to this project, for Visual Studio Code. See [the editors doc](editors.md#visual-studio-code) for more.
-
-## `.vuepress`
+## `docs`
 
 [VuePress](https://vuepress.vuejs.org/) configuration for docs static site generation.
-
-## `docs`
 
 You found me! :wink:
 
@@ -42,7 +30,7 @@ Generator templates to speed up development. See [the development doc](developme
 
 ## `public`
 
-Where you'll keep any static assets, to be added to the `dist` directory without processing from our build system.
+Where you'll keep any static assets, to be added to the `dist` directory without processing from our build system. Ex: We use [`Tinymce`](https://www.tiny.cloud/docs/) for WYSIWYG editors, so we'll need to add its assets to the `public` directory.
 
 ### `index.html`
 
@@ -58,11 +46,11 @@ This project manages assets via Vue CLI. Learn more about [its asset handling he
 
 ### `components`
 
-Where most of the components in our app will live, including our [global base components](development.md#base-components).
+Where most of the components in our app will live.
 
-### `design`
+### `styles`
 
-Where we keep our [design variables and tooling](tech.md#design-variables-and-tooling).
+Override `ElementUI` class, global style Where we keep our [design variables and tooling](tech.md#design-variables-and-tooling).
 
 ### `router`
 
@@ -76,17 +64,21 @@ Where all our global state management lives. See [the state management doc](stat
 
 These are utility functions you may want to share between many files in your application. They will always be pure and never have side effects, meaning if you provide a function the same arguments, it will always return the same result. These should also never directly affect the DOM or interface with our Vuex state.
 
-### `app.config.json`
+### `project-config`
 
 Contains app-specific metadata.
 
-### `app.vue`
+### `App.vue`
 
 The root Vue component that simply delegates to the router view. This is typically the only component to contain global CSS.
 
 ### `main.js`
 
 The entry point to our app, were we create our Vue instance and mount it to the DOM.
+
+### `permission.js`
+
+ACL of permissions for our app.
 
 ## `tests`
 

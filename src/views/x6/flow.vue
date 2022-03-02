@@ -36,7 +36,7 @@
 import { ref, onMounted, watch } from '@vue/composition-api'
 import { Graph, Shape, Addon } from '@antv/x6'
 import '@antv/x6-vue-shape'
-// import initData from './initData.json'
+import initData from './initData.json'
 import ElButtonWrapper from '@/components/ElButtonWrapper'
 import Check from './check'
 
@@ -162,7 +162,8 @@ export default {
         groups: [
           {
             title: '基础流程图',
-            name: 'group1'
+            name: 'group1',
+            graphHeight: 250
           },
           {
             title: '系统设计图',
@@ -174,7 +175,7 @@ export default {
           }
         ],
         layoutOptions: {
-          columns: 3,
+          columns: 2,
           columnWidth: 80,
           rowHeight: 55
         }
@@ -711,29 +712,12 @@ export default {
         label: '连接'
       })
 
-      const r7 = graph.createNode({
-        shape: 'custom-vue',
-        attrs: {
-          body: {
-            strokeWidth: 1,
-            stroke: '#5F95FF',
-            fill: '#EFF4FF'
-          },
-          text: {
-            fontSize: 12,
-            color: '#262626'
-          }
-        },
-        ports: { ...ports },
-        label: 'what'
-      })
-
-      const r8 = graph.value.createNode({
+      const r8 = graph.createNode({
         shape: 'custom-vue',
         label: '开始'
       })
 
-      stencil.load([r1, r2, r3, r4, r5, r6, r7, r8], 'group1')
+      stencil.load([r1, r2, r3, r4, r5, r6, r8], 'group1')
 
       const m1 = graph.createNode({
         shape: 'custom-image',
@@ -751,7 +735,7 @@ export default {
       stencil.load([m1], 'group2')
       // #endregion
 
-      // graph.fromJSON(initData)
+      graph.fromJSON(initData)
     }
 
     const getGraphData = () => {
