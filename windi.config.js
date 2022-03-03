@@ -24,6 +24,12 @@ module.exports = {
     generateRotateBy45Deg(),
     ['rotate-585']
   ],
+  extract: {
+    include: [
+      'src/**/*.{vue,jsx,tsx,svelte}',
+      'shared/**/*.{vue,ts}'
+    ]
+  },
   theme: {
     extend: {
       colors: customColor,
