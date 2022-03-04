@@ -11,7 +11,7 @@ module.exports = {
     nav: [
       { text: 'Home', link: '/' },
       { text: 'Guide', link: '/guide/' },
-      { text: 'GitLab', link: 'https://google.com' }
+      { text: 'Github', link: 'https://github.com/Ellipse120/admin-template-quick-starter' }
     ],
     displayAllHeaders: true,
     smoothScroll: true,
