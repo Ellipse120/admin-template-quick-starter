@@ -94,7 +94,7 @@ npm run new:crud
 npm run new:component
 ```
 
-![Image from alias](/code-generator.gif)
+![Image from alias](/assets/imgs/code-generator.gif)
 
 Update existing or create new generators in the `generators` folder, for detail: [Hygen docs](http://www.hygen.io/).
 
