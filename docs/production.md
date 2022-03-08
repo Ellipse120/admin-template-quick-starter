@@ -7,7 +7,7 @@
 
 ```bash
 # Build for different env production with minification
-npm run build
+npm run build:prod
 
 npm run build:staging
 ```
