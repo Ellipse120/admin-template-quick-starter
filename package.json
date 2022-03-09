@@ -29,7 +29,7 @@
     "@tinymce/tinymce-vue": "^3.2.8",
     "@vue/composition-api": "^1.4.9",
     "@vueuse/core": "^7.7.0",
-    "axios": "0.26.0",
+    "axios": "0.21.1",
     "canvas-confetti": "1.5.1",
     "core-js": "3.6.5",
     "crypto-js": "4.1.1",
