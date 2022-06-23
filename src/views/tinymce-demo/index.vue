@@ -2,7 +2,11 @@
   <div>
     <pre>{{ model.a }}</pre>
 
-    <rich-text-editor v-model="model.a" />
+    <el-button @click="add">
+      add
+    </el-button>
+
+    <rich-text-editor ref="editor" v-model="model.a" />
   </div>
 </template>
 
@@ -19,9 +23,21 @@ export default {
     const model = ref({
       a: null
     })
+    const editor = ref(null)
+
+    const add = () => {
+      const id = Math.random() * 1000
+      const el = window.tinymce.activeEditor.dom.createHTML('table', {
+        id: id
+      }, '<thead><tr><td>1</td><td>2</td></tr></thead>')
+      window.tinymce.activeEditor.selection.setContent(el)
+      // window.tinymce.activeEditor.dom.add(window.tinymce.activeEditor.getBody(), 'b', { title: 'lsssss' }, 'fuck')
+    }
 
     return {
-      model
+      model,
+      editor,
+      add
     }
   }
 }
