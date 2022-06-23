@@ -159,6 +159,12 @@ export const checkPermissionRoutes = [
         meta: { title: 'ECharts Demo' }
       },
       {
+        path: 'filerobot-image-editor-demo',
+        name: 'FilerobotImageEditorDemo',
+        component: () => lazyLoadView(import('@/views/filerobot-image-editor-demo/index')),
+        meta: { title: 'FilerobotImageEditor Demo' }
+      },
+      {
         path: 'x6-demo',
         component: { render: (h) => h('router-view') },
         meta: { title: 'X6 Demo' },
