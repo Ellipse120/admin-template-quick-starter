@@ -6,10 +6,10 @@ to: src/views/<%= name %>/index.vue
   <div>
     <el-row :gutter="8">
       <el-col :md="4" :xl="3" class="mb-2">
-        <el-input v-model="query.name" placeholder="请输入姓名" title="姓名" clearable />
+        <el-input-wrapper v-model="query.name" title="姓名" />
       </el-col>
       <el-col :md="4" :xl="3" class="mb-2">
-        <el-select-wrapper v-model="query.gender" placeholder="请选择性别" title="性别" :options="enums.genderOptions" clearable />
+        <el-select-wrapper v-model="query.gender" title="性别" :options="enums.genderOptions" />
       </el-col>
       <el-button-wrapper class="ml-2" icon="el-icon-close" @click="resetQuery">清空</el-button-wrapper>
       <el-button-wrapper type="primary" icon="el-icon-search" @click="doSearch">查询</el-button-wrapper>
@@ -74,10 +74,11 @@ import ElTableWrapper from '@/components/ElTableWrapper'
 import ElSelectWrapper from '@/components/ElSelectWrapper'
 import ElButtonWrapper from '@/components/ElButtonWrapper'
 import OperationBtnGroups from '@/components/OperationsWrapper'
+import ElInputWrapper from '@/components/ElInputWrapper'
 
 export default {
   name: '<%= h.changeCase.pascal(name) %>',
-  components: { OperationBtnGroups, ElButtonWrapper, ElSelectWrapper, ElTableWrapper },
+  components: { OperationBtnGroups, ElButtonWrapper, ElSelectWrapper, ElTableWrapper, ElInputWrapper },
   data () {
     return {
       query: {

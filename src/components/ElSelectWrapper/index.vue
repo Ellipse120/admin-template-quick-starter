@@ -4,7 +4,8 @@
     clearable
     filterable
     default-first-option
-    class="full-width"
+    :placeholder="`请选择${title}`"
+    class="w-full"
     v-bind="$attrs"
     v-on="$listeners"
   >
@@ -37,6 +38,10 @@ export default {
       default () {
         return []
       }
+    },
+    title: {
+      type: [String],
+      default: () => ''
     }
   },
   data () {
