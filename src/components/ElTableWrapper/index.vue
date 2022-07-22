@@ -1,5 +1,6 @@
 <template>
   <el-table
+    :height="height"
     :border="border"
     :stripe="stripe"
     v-bind="$attrs"
@@ -24,6 +25,10 @@ export default {
     stripe: {
       type: Boolean,
       default: true
+    },
+    height: {
+      type: [String, Number],
+      default: '100%'
     }
   }
 }
