@@ -1,45 +1,49 @@
 <template>
-  <div>
-    <el-row :gutter="8">
-      <el-col :md="4" :xl="3" class="mb-2">
-        <el-input-wrapper v-model="query.name" title="姓名">
-          <el-link slot="append" type="primary">查询</el-link>
-        </el-input-wrapper>
-      </el-col>
-      <el-col :md="4" :xl="3" class="mb-2">
-        <el-select-wrapper v-model="query.gender" title="性别" :options="enums.genderOptions" />
-      </el-col>
-      <el-button-wrapper class="ml-2" icon="el-icon-close" @click="resetQuery">清空</el-button-wrapper>
-      <el-button-wrapper type="primary" icon="el-icon-search" @click="doSearch">查询</el-button-wrapper>
-      <el-button-wrapper type="success" icon="el-icon-plus" @click="doAdd">添加</el-button-wrapper>
-    </el-row>
+  <ListSkeleton>
+    <template #query>
+      <el-row :gutter="8">
+        <el-col :md="4" :xl="3" class="mb-2">
+          <el-input-wrapper v-model="query.name" title="姓名" />
+        </el-col>
+        <el-col :md="4" :xl="3" class="mb-2">
+          <el-select-wrapper v-model="query.gender" title="性别" :options="enums.genderOptions" />
+        </el-col>
+        <el-button-wrapper class="ml-2" icon="el-icon-close" @click="resetQuery">清空</el-button-wrapper>
+        <el-button-wrapper type="primary" icon="el-icon-search" @click="doSearch">查询</el-button-wrapper>
+        <el-button-wrapper type="success" icon="el-icon-plus" @click="doAdd">添加</el-button-wrapper>
+      </el-row>
+    </template>
 
-    <el-table-wrapper class="my-2" :data="list">
-      <el-table-column type="index" label="序号" align="center" width="80" />
-      <el-table-column label="姓名" align="center" property="name" />
-      <el-table-column label="年龄" align="center" property="age" />
-      <el-table-column label="性别" align="center" property="gender" :formatter="(row) => formatTextMixin(enums.genderOptions, row.gender)" />
-      <el-table-column label="备注" align="center" property="remark" min-width="200" show-tooltip-when-overflow />
-      <el-table-column align="center" label="操作">
-        <template slot-scope="scope">
-          <operation-btn-groups>
-            <el-button type="text" icon="el-icon-edit" @click="doEdit(scope)">编辑</el-button>
-            <el-button type="text" icon="el-icon-view" @click="doViewInfo(scope)">查看</el-button>
-            <el-button type="text" icon="el-icon-delete" @click="doRemove(scope)">删除</el-button>
-          </operation-btn-groups>
-        </template>
-      </el-table-column>
-    </el-table-wrapper>
+    <template #table>
+      <el-table-wrapper v-loading="isLoading" :data="list">
+        <el-table-column type="index" label="序号" align="center" width="80" />
+        <el-table-column label="姓名" align="center" property="name" />
+        <el-table-column label="年龄" align="center" property="age" />
+        <el-table-column label="性别" align="center" property="gender" :formatter="(row) => formatTextMixin(enums.genderOptions, row.gender)" />
+        <el-table-column label="备注" align="center" property="remark" min-width="200" show-tooltip-when-overflow />
+        <el-table-column align="center" label="操作">
+          <template slot-scope="scope">
+            <operation-btn-groups>
+              <el-button type="text" icon="el-icon-edit" @click="doEdit(scope)">编辑</el-button>
+              <el-button type="text" icon="el-icon-view" @click="doViewInfo(scope)">查看</el-button>
+              <el-button type="text" icon="el-icon-delete" @click="doRemove(scope)">删除</el-button>
+            </operation-btn-groups>
+          </template>
+        </el-table-column>
+      </el-table-wrapper>
+    </template>
 
-    <el-pagination
-      :current-page="pagination.pageNo"
-      :page-sizes="[10, 20, 100]"
-      :page-size="pagination.pageSize"
-      layout="total, sizes, prev, pager, next, jumper"
-      :total="pagination.totalRecords"
-      @size-change="handleSizeChange"
-      @current-change="handleCurrentChange"
-    />
+    <template #pager>
+      <el-pagination
+        :current-page="pagination.pageNo"
+        :page-sizes="[10, 20, 100]"
+        :page-size="pagination.pageSize"
+        :total="pagination.totalRecords"
+        layout="total, sizes, prev, pager, next, jumper"
+        @current-change="handlePageNoChange"
+        @size-change="handlePageSizeChange"
+      />
+    </template>
 
     <el-dialog :visible.sync="dialogVisible" title="维护">
       <el-form ref="form" :model="model" :rules="rules" label-width="80px">
@@ -61,7 +65,7 @@
         <el-button-wrapper type="primary" :loading="isSaving" @click="doSave">保存</el-button-wrapper>
       </template>
     </el-dialog>
-  </div>
+  </ListSkeleton>
 </template>
 
 <script>
@@ -73,10 +77,18 @@ import ElSelectWrapper from '@/components/ElSelectWrapper'
 import ElButtonWrapper from '@/components/ElButtonWrapper'
 import OperationBtnGroups from '@/components/OperationsWrapper'
 import ElInputWrapper from '@/components/ElInputWrapper'
+import ListSkeleton from '@/components/ListSkeleton'
 
 export default {
   name: 'CrudDemo',
-  components: { OperationBtnGroups, ElButtonWrapper, ElSelectWrapper, ElTableWrapper, ElInputWrapper },
+  components: {
+    OperationBtnGroups,
+    ElButtonWrapper,
+    ElSelectWrapper,
+    ElTableWrapper,
+    ElInputWrapper,
+    ListSkeleton
+  },
   data () {
     return {
       query: {
@@ -88,7 +100,15 @@ export default {
         gender: null
       },
       isLoading: false,
-      list: [{ id: 1, name: 'James', age: 37, gender: '男', remark: 'lorem' }],
+      list: [
+        {
+          id: 1,
+          name: 'James',
+          age: 37,
+          gender: '男',
+          remark: 'lorem'
+        }
+      ],
       pagination: {
         pageNo: 1,
         pageSize: 20,
@@ -141,12 +161,12 @@ export default {
       this.query = cloneDeep(this.defaultQuery)
     },
 
-    handleCurrentChange (pageNo) {
+    handlePageNoChange (pageNo) {
       this.pagination.pageNo = pageNo
       this.getList()
     },
 
-    handleSizeChange (pageSize) {
+    handlePageSizeChange (pageSize) {
       this.pagination.pageSize = pageSize
       this.getList()
     },
@@ -206,7 +226,6 @@ export default {
         await this.getList()
       }).catch(() => {})
     }
-
   }
 }
 </script>

@@ -1,6 +1,6 @@
 import request from '@/utils/request'
 
-const baseUrl = `${process.env.VUE_APP_LOCAL_BASE_API}/xxx`
+const baseUrl = `${process.env.VUE_APP_LOCAL_BASE_API}/crud-demo`
 
 export const list = (params) => {
   return request({
@@ -39,3 +39,4 @@ export const remove = (id) => {
     method: 'delete'
   })
 }
+

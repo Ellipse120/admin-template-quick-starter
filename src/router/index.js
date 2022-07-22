@@ -95,16 +95,16 @@ export const constantRoutes = [
  */
 export const checkPermissionRoutes = [
   {
-    path: '/crud',
+    path: '/crud-demo',
     component: Layout,
-    meta: { title: 'Demo' },
+    meta: { title: 'CrudDemo' },
     alwaysShow: true,
     children: [
       {
         path: '',
         name: 'CrudDemo',
         component: () => lazyLoadView(import('@/views/crud-demo/index')),
-        meta: { title: 'CRUD Demo' }
+        meta: { title: 'CrudDemo' }
       }
     ]
   },
