@@ -143,12 +143,12 @@ export default {
       this.query = cloneDeep(this.defaultQuery)
     },
 
-    handleSizeChange (pageNo) {
+    handleCurrentChange (pageNo) {
       this.pagination.pageNo = pageNo
       this.getList()
     },
 
-    handleCurrentChange (pageSize) {
+    handleSizeChange (pageSize) {
       this.pagination.pageSize = pageSize
       this.getList()
     },
