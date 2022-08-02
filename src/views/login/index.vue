@@ -30,7 +30,7 @@
 
       <el-form-item prop="password">
         <el-input
-          v-model="loginForm.password"
+          v-model.trim="loginForm.password"
           show-password
           placeholder="密码"
           name="password"
@@ -44,13 +44,13 @@
         </el-input>
       </el-form-item>
 
-      <el-button class="full-width" :loading="loading" type="primary" @click.native.prevent="handleLogin">登陆</el-button>
+      <el-button class="w-full mt-4" :loading="loading" type="primary" @click.native.prevent="handleLogin">登陆</el-button>
     </el-form>
   </div>
 </template>
 
 <script>
-import { title, subTitle } from '@/project-config.js'
+import { title, subTitle, passwordPattern, passwordInvalidMessage } from '@/project-config.js'
 import { ParticlesBg } from 'particles-bg-vue'
 import icon from './icon'
 import confetti from 'canvas-confetti'
@@ -61,29 +61,14 @@ export default {
   name: 'Login',
   components: { ParticlesBg },
   data () {
-    const validateUsername = (rule, value, callback) => {
-      if (!value) {
-        callback(new Error('请输入用户名'))
-      } else {
-        callback()
-      }
-    }
-    const validatePassword = (rule, value, callback) => {
-      if (value.length < 6) {
-        callback(new Error('The password can not be less than 6 digits'))
-      } else {
-        callback()
-      }
-    }
-
     return {
       loginForm: {
         username: 'admin',
         password: 'Phm@railway123'
       },
       loginRules: {
-        username: [{ required: true, trigger: 'blur', validator: validateUsername }],
-        password: [{ required: true, trigger: 'blur', validator: validatePassword }]
+        username: [{ required: true, message: '不能为空', trigger: 'blur' }],
+        password: [{ required: true, message: passwordInvalidMessage, pattern: passwordPattern, trigger: ['blur', 'change'] }]
       },
       loading: false,
       passwordType: 'password',

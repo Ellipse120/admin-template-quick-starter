@@ -133,6 +133,7 @@
 <script>
 import cloneDeep from 'lodash/cloneDeep'
 import { list, detail, add, modify, remove, setRoles, resetPassword, organList as getAllOrganization } from './api'
+import { passwordPattern, passwordInvalidMessage } from '@/project-config'
 import autoTableHeight from '@/mixins/autoTableHeight'
 import { allRoles } from '@/views/menu-management/api'
 import ElTableWrapper from '@/components/ElTableWrapper'
@@ -298,27 +299,30 @@ export default {
       this.$prompt(`请输入【 ${scope.row.loginName}】重置后密码`, '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
+        inputPattern: passwordPattern,
+        inputErrorMessage: passwordInvalidMessage,
         closeOnPressEscape: false,
         closeOnClickModal: false
-      }).then(async (data) => {
-        if (data.value === null) {
-          this.$message({
-            type: 'info',
-            message: '请输入密码'
-          })
-          return
-        }
-        const d = {
-          userId: this.userId,
-          newPassword: data.value
-        }
-        await resetPassword(d)
-
-        this.$message({
-          type: 'success',
-          message: '重置成功'
-        })
       })
+        .then(async (data) => {
+          if (data.value === null) {
+            this.$message({
+              type: 'info',
+              message: '请输入密码'
+            })
+            return
+          }
+          const d = {
+            userId: this.userId,
+            newPassword: data.value
+          }
+          await resetPassword(d)
+
+          this.$message({
+            type: 'success',
+            message: '重置成功'
+          })
+        })
         .catch(() => {})
     },
 

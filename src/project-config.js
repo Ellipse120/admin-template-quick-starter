@@ -8,6 +8,10 @@ module.exports = {
 
   subTitle: 'xx-admin-system',
 
+  passwordPattern: '^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$',
+
+  passwordInvalidMessage: '最少八个字符，至少一个大写英文字母，一个小写英文字母，一个数字和一个特殊字符',
+
   /**
    * @type {boolean} true | false
    * @description Whether fix the header
