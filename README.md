@@ -2,13 +2,13 @@
 
 > Lerna & Husky & CommitLint & Vue.js 2 & Vue Composition API & Element UI & Windi CSS & AntV X6 & Axios & CryptoJS & [date-fns](http://10.128.198.185:8080/date-fns-doc/) & Tinymce & VirtualScroll & Iconfont & Permission Control & Lint
 
-**Live demo:** [http://10.128.198.185:8080/xxx/](http://10.128.198.185:8080/xxx/)
+[**Live demo**](https://admin-template-quick-starter.vercel.app/)
 
 ## Development
 
 ```bash
 # clone the project
-git clone git@10.128.198.29:phm-g1/crh-advanced-digital-factory.git
+git clone https://github.com/Ellipse120/admin-template-quick-starter.git
 
 # enter the project directory
 cd crh-advanced-digital-factory
@@ -16,7 +16,8 @@ cd crh-advanced-digital-factory
 # (optional) Windows用户需要执行
 husky install
 
-# 安装依赖 从[FTP](ftp://test@10.128.73.241/node_modules%E7%9B%AE%E5%BD%95/%E9%AB%98%E7%BA%A7%E4%BF%AE%E5%B7%A5%E5%8E%82)获取node_modules 包
+# install dependencies
+npm i
 
 # 开发
 npm run dev
@@ -36,16 +37,6 @@ or npm run release:major
 
 # 最后在master分支打包发布
 npm run build:prod
-```
-
-## Advanced
-
-```bash
-# preview the release environment effect
-npm run preview
-
-# preview the release environment effect + static resource analysis
-npm run preview -- --report
 ```
 
 ---
