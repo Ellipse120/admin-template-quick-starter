@@ -88,7 +88,8 @@ This project includes generators to speed up common development tasks. Commands 
 
 ```bash
 # Generate a new view component
-npm run new:crud
+npm run new:crud-OptionsAPI
+npm run new:crud-CompositionAPI
 
 # Generate a new component
 npm run new:component
