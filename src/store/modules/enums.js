@@ -47,6 +47,12 @@ const genderOptions = [
   { key: '其他', value: '其他' }
 ]
 
+const statusOptions = [
+  { key: 'draft', value: 'draft' },
+  { key: 'published', value: 'published' },
+  { key: 'deleted', value: 'deleted' }
+]
+
 const state = {
   boolNumList,
   boolStrList,
@@ -55,7 +61,8 @@ const state = {
   menuTypes,
   departmentList,
   userList,
-  genderOptions
+  genderOptions,
+  statusOptions
 }
 
 const mutations = {}
