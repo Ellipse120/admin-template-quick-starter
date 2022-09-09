@@ -19,7 +19,7 @@ export default {
     }
   },
   render (h) {
-    const rawContents = this.$slots.default.filter(vNode => vNode.tag) // filter `text` and `tag === undefined` elm
+    const rawContents = this.$slots?.default?.filter(vNode => vNode.tag) || [] // filter `text` and `tag === undefined` elm
     const vNodeCount = this.btnCount
 
     const displayedButtons = rawContents.slice(0, vNodeCount)
