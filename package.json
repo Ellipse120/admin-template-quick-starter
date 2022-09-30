@@ -20,7 +20,9 @@
     "release:patch": "standard-version --release-as patch",
     "start": "npm run dev",
     "svgo": "svgo -f src/icons/svg --config=src/icons/svgo.yml",
-    "test:ci": "npm run lint && npm run test:unit"
+    "test:ci": "npm run lint && npm run test:unit",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
     "@antv/layout": "^0.1.30",
@@ -57,8 +59,17 @@
     "vuex": "3.6.2"
   },
   "devDependencies": {
+    "@babel/core": "^7.19.3",
     "@commitlint/cli": "^16.2.1",
     "@commitlint/config-conventional": "^16.2.1",
+    "@storybook/addon-actions": "^6.5.12",
+    "@storybook/addon-essentials": "^6.5.12",
+    "@storybook/addon-interactions": "^6.5.12",
+    "@storybook/addon-links": "^6.5.12",
+    "@storybook/builder-webpack4": "^6.5.12",
+    "@storybook/manager-webpack4": "^6.5.12",
+    "@storybook/testing-library": "0.0.13",
+    "@storybook/vue": "^6.5.12",
     "@vue/cli-plugin-babel": "4.5.0",
     "@vue/cli-plugin-eslint": "4.5.0",
     "@vue/cli-plugin-unit-jest": "4.5.0",
@@ -66,11 +77,13 @@
     "@vue/test-utils": "1.0.0-beta.29",
     "babel-eslint": "10.1.0",
     "babel-jest": "23.6.0",
+    "babel-loader": "^8.2.5",
     "babel-plugin-dynamic-import-node": "2.3.3",
     "babel-plugin-import": "^1.13.3",
     "chalk": "2.4.2",
     "connect": "3.6.6",
     "eslint": "7.30.0",
+    "eslint-plugin-storybook": "^0.6.4",
     "eslint-plugin-vue": "7.13.0",
     "html-webpack-plugin": "3.2.0",
     "husky": "7.0.4",
@@ -87,6 +100,7 @@
     "svgo": "1.2.2",
     "vue-cli-plugin-compression": "^1.1.5",
     "vue-cli-plugin-windicss": "~1.1.6",
+    "vue-loader": "^15.10.0",
     "vue-template-compiler": "2.6.14",
     "vuepress": "^1.9.7"
   },
