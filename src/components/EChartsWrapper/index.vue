@@ -97,6 +97,7 @@ export default {
       this.setOptions(this.chartData)
     },
     setOptions (options) {
+      this.chart.clear()
       this.chart.setOption(options, true)
     }
   }
