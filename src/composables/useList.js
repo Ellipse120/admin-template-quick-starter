@@ -1,4 +1,4 @@
-import { ref, computed } from '@vue/composition-api'
+import { ref, computed, nextTick } from '@vue/composition-api'
 import cloneDeep from 'lodash/cloneDeep'
 import { MessageBox, Message } from 'element-ui'
 import store from '@/store'
@@ -81,12 +81,18 @@ const useList = (query, apiFnMapper = { list: NOOP, add: NOOP, modify: NOOP, rem
 
   const doAdd = () => {
     manageState.value = manageStateMapper.value.ADD
+    nextTick(() => {
+      formRef.value?.resetFields()
+    })
     model.value = cloneDeep(defaultModel.value)
     toggleDialogVisible(true)
   }
 
   const doEdit = async (scope) => {
     manageState.value = manageStateMapper.value.EDIT
+    nextTick(() => {
+      formRef.value?.resetFields()
+    })
     toggleDialogVisible(true)
     isDetailLoading.value = true
     const { data } = await apiFnMapper.detail(scope.row.id).finally(() => {
