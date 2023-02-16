@@ -34,8 +34,13 @@ Vue.use(Router)
 /**
  * Lazy-loads view components, but with better UX. A loading view
  * will be used if the component takes a while to load, falling
- * back to a timeout view in case the page fails to load. You can
- * use this component to lazy-load a route with:
+ * back to a timeout view in case the page fails to load.
+ *
+ * !!!WARNING: when you need to use `In-Component Guards`, `Don't` use.
+ * ?Components loaded with this strategy will not have access to in-component guards, such as beforeRouteEnter, beforeRouteUpdate, and BeforeRouteLeave.
+ * ?If you need to use these, you must either use route-level guards instead or lazy-load the component directly, without handling loading state.
+ *
+ * You can use this component to lazy-load a route with:
  * @param asyncView
  * @returns {Promise<{functional: boolean, render(*, {data?: *, children?: *}): *}>}
  */
