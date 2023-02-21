@@ -5,6 +5,7 @@
     :border="border"
     :stripe="stripe"
     :header-cell-class-name="setFixedColumnsClass"
+    title="Click table header to frozen this column and columns on the left"
     v-bind="$attrs"
     @header-click="toggleFixedColumns"
     v-on="$listeners"

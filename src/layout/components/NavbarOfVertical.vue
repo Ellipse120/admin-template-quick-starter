@@ -53,10 +53,6 @@ export default {
       activeIndex2: '1'
     }
   },
-  mounted () {
-    // console.log(this.permission_routes, '======================')
-  },
-  // eslint-disable-next-line vue/order-in-components
   computed: {
     ...mapGetters([
       'permission_routes'
@@ -111,6 +107,6 @@ export default {
 
 <style scoped>
   .logo {
-    background-image: url('~@/assets/images/brand/railway-icon.png');
+    background-image: url('~@/assets/images/logo.png');
   }
 </style>
