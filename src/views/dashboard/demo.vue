@@ -26,6 +26,12 @@
       <el-input v-model="tmp" clearable />
     </div>
 
+    <el-table-wrapper ref="seamlessScrollTableRef" height="300" :data="scrollTableListData">
+      <el-table-column label="A" property="a" align="center" />
+      <el-table-column label="B" property="b" align="center" />
+      <el-table-column label="C" property="c" align="center" />
+    </el-table-wrapper>
+
     <el-divider />
 
     <el-form :model="model" label-width="100px" class="border p-2 bg-red-100">
@@ -78,12 +84,17 @@ import { useMouse, useDraggable } from '@vueuse/core'
 import { ref, onMounted } from '@vue/composition-api'
 import { gsap } from 'gsap'
 import { TextPlugin } from 'gsap/TextPlugin'
+import ElTableWrapper from '@/components/ElTableWrapper'
 
 gsap.registerPlugin(TextPlugin)
 
 export default {
   name: 'Demo',
-  setup () {
+  components: {
+    ElTableWrapper
+  },
+  setup (_, context) {
+    const rootInstance = context.root
     const visible = ref(false)
     const { x, y } = useMouse()
     const tmp = ref(null)
@@ -94,7 +105,14 @@ export default {
     const model = ref({
       a: 'test'
     })
-
+    const seamlessScrollTableRef = ref(null)
+    const scrollTableListData = ref(Array.from({ length: 50 }, (_, index) => {
+      return {
+        a: index,
+        b: index * 2,
+        c: index + 1
+      }
+    }))
     const { x: fx, y: fy, style } = useDraggable(el, {
       initialValue: { x: 80, y: 80 }
     })
@@ -156,6 +174,8 @@ export default {
     }
 
     onMounted(() => {
+      rootInstance.seamlessScrollOfElTableMixin(seamlessScrollTableRef.value)
+
       machineGun()
       timeline = gsap.timeline({ paused: true })
 
@@ -198,6 +218,8 @@ export default {
       tmp,
       model,
       animationState,
+      seamlessScrollTableRef,
+      scrollTableListData,
       doTransform,
       doPlay,
       doPause,
