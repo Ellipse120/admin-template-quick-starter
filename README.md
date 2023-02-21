@@ -1,10 +1,20 @@
-# 管理系统模板
+# Admin Template Quick Starter
 
-> Lerna & Husky & CommitLint & Vue.js 2 & Vue Composition API & Element UI & Windi CSS & AntV X6 & Axios & CryptoJS & [date-fns](http://10.128.198.185:8080/date-fns-doc/) & Tinymce & VirtualScroll & Iconfont & Permission Control & Lint
+## Tech Stack
 
-[**Live demo**](https://admin-template-quick-starter.vercel.app/)
+> Lerna & Husky & CommitLint & Vue.js 2 & Vue Composition API & Element UI & Windi CSS & AntV X6 & Axios & CryptoJS & date-fns & Tinymce & VirtualScroll & Iconfont & Permission Control & ES Lint
+
+## [**Document**](https://admin-template-quick-starter-docs.vercel.app/)
+
+## [**Live demo**](https://admin-template-quick-starter.vercel.app/)
 
 ## Development
+
+### Recomend
+
+```bash
+degit https://github.com/Ellipse120/admin-template-quick-starter.git
+```
 
 ```bash
 # clone the project
@@ -13,35 +23,33 @@ git clone https://github.com/Ellipse120/admin-template-quick-starter.git
 # enter the project directory
 cd crh-advanced-digital-factory
 
-# (optional) Windows用户需要执行
-husky install
-
 # install dependencies
 npm i
 
-# 开发
+# dev
 npm run dev
 ```
 
 ## Production
 
 ```bash
-# 发布测试环境
+# release staging
 npm run build:stage
 
-# 发布生产环境
-# `dev` 合并到`master`分支, 禁止反向操作. 然后将master最新的代码及Tag推送
+# relase production
 npm run release:minor
 or npm run release:patch
 or npm run release:major
 
-# 最后在master分支打包发布
+# push production code to CI
 npm run build:prod
 ```
 
 ---
 
-## Git Commit Message Format: `<type>(scope): <short summary>`
+## `Git Commit Message Format`
+
+>  `<type>(scope): <short summary>`
 
 ```text
 type: Commit Type, build | ci | docs | feat | style | fix | perf | refactor | test
@@ -64,4 +72,4 @@ test: Adding missing tests or unit test or correcting existing tests
 ```
 ---
 
-Copyright (c) 2021-present lusai
+Copyright (c) 2021-present [Ellipse120](ellipse120@gmail.com)
