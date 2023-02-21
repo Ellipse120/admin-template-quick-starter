@@ -2,7 +2,6 @@ module.exports = {
   title: "Admin Template Quick Starter",
   description: "A simple and beautiful vuepress blog",
   port: 8100,
-  base: "/docs/",
   markdown: {
     lineNumbers: true
   },
