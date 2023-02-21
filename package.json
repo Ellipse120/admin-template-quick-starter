@@ -110,7 +110,7 @@
   ],
   "copyright": "Copyright (c) 2021-present lusai",
   "engines": {
-    "node": ">=14.0.0",
+    "node": ">=14.0.0 <15",
     "npm": ">= 6.0.0"
   },
   "lint-staged": {
