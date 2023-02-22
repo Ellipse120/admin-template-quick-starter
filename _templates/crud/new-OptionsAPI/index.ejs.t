@@ -30,7 +30,7 @@ to: src/views/<%= name %>/index.vue
             <operation-btn-groups :btn-count="3">
               <el-button-wrapper type="text" icon="el-icon-edit" @click="doEdit(scope)">编辑</el-button-wrapper>
               <el-button-wrapper type="text" icon="el-icon-view" @click="doViewInfo(scope)">查看</el-button-wrapper>
-              <el-button-wrapper type="text" icon="el-icon-delete" @click="doRemove(scope)">删除</el-button-wrapper>
+              <el-button-wrapper type="text" class="text-red-500" icon="el-icon-delete" @click="doRemove(scope)">删除</el-button-wrapper>
             </operation-btn-groups>
           </template>
         </el-table-column>

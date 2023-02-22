@@ -29,8 +29,8 @@ const useList = (query, apiFnMapper = { list: NOOP, add: NOOP, modify: NOOP, rem
     pageSize: 20,
     totalRecords: 0
   })
-  const defaultQuery = cloneDeep(query)
-  const defaultModel = cloneDeep(model)
+  const defaultQuery = cloneDeep(query.value)
+  const defaultModel = cloneDeep(model.value)
 
   const enums = computed(() => store.state.enums)
   const manageDialogTitle = computed(() => {
@@ -84,7 +84,7 @@ const useList = (query, apiFnMapper = { list: NOOP, add: NOOP, modify: NOOP, rem
     nextTick(() => {
       formRef.value?.resetFields()
     })
-    model.value = cloneDeep(defaultModel.value)
+    model.value = cloneDeep(defaultModel)
     toggleDialogVisible(true)
   }
 
