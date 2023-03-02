@@ -2,7 +2,6 @@
 inject: true
 to: src/router/index.js
 after: export const checkPermissionRoutes = \[
-# append: true
 ---
 
   {
