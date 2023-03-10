@@ -1,5 +1,8 @@
 # Admin Template Quick Starter
 
+## Recent Activity
+![Alt](https://repobeats.axiom.co/api/embed/3e96048e4f3ebb2edcd569bad134a8e1a163f7c5.svg "Repobeats analytics image")
+
 ## Tech Stack
 
 > Lerna & Husky & CommitLint & Vue.js 2 & Vue Composition API & Element UI & Windi CSS & AntV X6 & Axios & CryptoJS & date-fns & Tinymce & VirtualScroll & Iconfont & Permission Control & ES Lint
