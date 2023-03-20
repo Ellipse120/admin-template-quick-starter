@@ -38,12 +38,8 @@ to: src/views/<%= name %>/index.vue
     </template>
 
     <template #pager>
-      <el-pagination
-        :current-page="pagination.pageNo"
-        :page-sizes="[10, 20, 100]"
-        :page-size="pagination.pageSize"
-        layout="total, sizes, prev, pager, next, jumper"
-        :total="pagination.totalRecords"
+      <el-pagination-wrapper
+        :pagination="pagination"
         @size-change="handleSizeChange"
         @current-change="handleCurrentChange"
       />
@@ -82,6 +78,7 @@ import ElButtonWrapper from '@/components/ElButtonWrapper'
 import ElInputWrapper from '@/components/ElInputWrapper'
 import OperationBtnGroups from '@/components/OperationsWrapper'
 import ListSkeleton from '@/components/ListSkeleton'
+import ElPaginationWrapper from '@/components/ElPaginationWrapper'
 
 export default {
   name: '<%= h.changeCase.pascal(name) %>',
@@ -91,7 +88,8 @@ export default {
     ElSelectWrapper,
     ElInputWrapper,
     ElTableWrapper,
-    ListSkeleton
+    ListSkeleton,
+    ElPaginationWrapper
   },
   data () {
     return {

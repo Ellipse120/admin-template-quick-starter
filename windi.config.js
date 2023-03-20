@@ -9,7 +9,16 @@ const customColor = {
   'ls-blue-700': 'rgb(22, 40, 76)',
   'ls-blue-800': 'rgb(11, 22, 53)',
   'ls-blue-900': 'rgb(2, 12, 42)',
-  'ls-gray-100': 'rgb(208,211,218)'
+  'ls-gray-100': 'rgb(208,211,218)',
+  'el-gray-300': '#666666',
+  'el-primary-400': '#66b1ff',
+  'el-primary': '#409eff',
+  'el-success-400': '#85ce61',
+  'el-success': '#67c23a',
+  'el-warning-400': '#ebb563',
+  'el-warning': '#e6a23c',
+  'el-danger-400': '#f78989',
+  'el-danger': '#f56c6c'
 }
 
 const generateRotateBy45Deg = () => {
