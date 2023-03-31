@@ -26,12 +26,21 @@ export function parseTime (time, cFormat = 'yyyy-MM-dd HH:mm:ss', options) {
   if (!time) {
     return null
   }
-  return format(toDate(time), cFormat, {
-    ...{
-      locale: zhLocale
-    },
-    ...options
-  })
+
+  let v
+
+  try {
+    v = format(toDate(time), cFormat, {
+      ...{
+        locale: zhLocale
+      },
+      ...options
+    })
+  } catch (e) {
+    console.log('Failed to convert date or number to Date: ', e.message)
+  }
+
+  return v
 }
 
 /**
