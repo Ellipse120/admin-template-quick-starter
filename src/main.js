@@ -1,5 +1,8 @@
 import { createApp } from '@vue/composition-api'
 
+import 'core-js/stable'
+import 'regenerator-runtime/runtime'
+
 import 'normalize.css/normalize.css' // A modern alternative to CSS resets
 
 import ElementUI from 'element-ui'

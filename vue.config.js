@@ -31,6 +31,7 @@ module.exports = {
   lintOnSave: isDev,
   productionSourceMap: false,
   runtimeCompiler: true,
+  transpileDependencies: ['v-calendar'],
   devServer: {
     port: port,
     open: true,

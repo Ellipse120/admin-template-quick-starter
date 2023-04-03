@@ -105,8 +105,7 @@
     "vuepress": "^1.9.7"
   },
   "browserslist": [
-    "> 1%",
-    "last 2 versions"
+    "ie 11"
   ],
   "copyright": "Copyright (c) 2021-present lusai",
   "engines": {
