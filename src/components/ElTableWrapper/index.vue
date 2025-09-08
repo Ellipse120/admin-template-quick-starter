@@ -12,7 +12,7 @@
   >
     <slot />
 
-    <template slot="empty">
+    <template #empty>
       <el-empty />
     </template>
   </el-table>

@@ -20,9 +20,9 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import Logo from './Logo'
-import SidebarItem from './SidebarItemOfHorizontal'
-import variables from '@/styles/variables.scss'
+import Logo from './Logo.vue'
+import SidebarItem from './SidebarItemOfHorizontal.vue'
+// import variables from '@/styles/variables.scss'
 
 export default {
   components: { SidebarItem, Logo },
@@ -44,7 +44,11 @@ export default {
       return this.$store.state.settings.sidebarLogo
     },
     variables () {
-      return variables
+      return {
+        menuBg: '#0f4c81',
+        menuActiveText: '#0079fe',
+        menuText: '#ffffff'
+      }
     },
     isCollapse () {
       return !this.sidebar.opened

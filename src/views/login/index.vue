@@ -1,6 +1,6 @@
 <template>
   <div class="login-container">
-    <particles-bg :key="typeModel" :type="typeModel" :config="config" :bg="true" />
+    <!-- <particles-bg :key="typeModel" :type="typeModel" :config="config" :bg="true" /> -->
 
     <el-form
       ref="loginForm"
@@ -50,8 +50,9 @@
 </template>
 
 <script>
-import { title, subTitle, passwordPattern, passwordInvalidMessage } from '@/project-config.js'
-import { ParticlesBg } from 'particles-bg-vue'
+// import { title, subTitle, passwordPattern, passwordInvalidMessage } from '@/project-config.js'
+import config from '@/project-config.js'
+// import { ParticlesBg } from 'particles-bg-vue'
 import icon from './icon'
 import confetti from 'canvas-confetti'
 
@@ -59,7 +60,7 @@ import confetti from 'canvas-confetti'
 
 export default {
   name: 'Login',
-  components: { ParticlesBg },
+  // components: { ParticlesBg },
   data () {
     return {
       loginForm: {
@@ -68,14 +69,14 @@ export default {
       },
       loginRules: {
         username: [{ required: true, message: '不能为空', trigger: 'blur' }],
-        password: [{ required: true, message: passwordInvalidMessage, pattern: passwordPattern, trigger: ['blur', 'change'] }]
+        password: [{ required: true, message: config.passwordInvalidMessage, pattern: config.passwordPattern, trigger: ['blur', 'change'] }]
       },
       loading: false,
       passwordType: 'password',
       redirect: undefined,
-      title: title,
-      subTitle: subTitle,
-      env: process.env.VUE_APP_ENV_NAME,
+      title: config.title,
+      subTitle: config.subTitle,
+      env: import.meta.env.VITE_APP_ENV_NAME,
       userDialogVisible: false,
       config: {
         num: [4, 7],

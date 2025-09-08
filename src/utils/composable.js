@@ -1,5 +1,6 @@
 import debounce from 'lodash/debounce'
-import { ref, onMounted, onBeforeUnmount, nextTick } from '@vue/composition-api'
+// import { ref, onMounted, onBeforeUnmount, nextTick } from '@vue/composition-api'
+import { ref, onMounted, onBeforeUnmount, nextTick } from 'vue'
 
 /**
  * 自动计算表格高度

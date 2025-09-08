@@ -2,11 +2,11 @@
   <div class="sidebar-logo-container" :class="{ 'collapse': collapse }" :style="{ backgroundColor: variables.logoBgColor }">
     <transition name="sidebarLogoFade">
       <router-link v-if="collapse" key="collapse" class="sidebar-logo-link" to="/">
-        <svg-icon v-if="logo" class-name="sidebar-logo text-blue-300" icon-class="tree" />
+        <div v-if="logo" class="text-blue-300 i-material-symbols-keyboard-double-arrow-left" />
         <h1 v-else class="sidebar-title">{{ title }} </h1>
       </router-link>
       <router-link v-else key="expand" class="sidebar-logo-link" to="/">
-        <svg-icon v-if="logo" class-name="sidebar-logo text-blue-300" icon-class="tree" />
+        <div v-if="logo" class="text-blue-300 i-material-symbols-keyboard-double-arrow-left" />
         <h1 class="sidebar-title">{{ title }} </h1>
       </router-link>
     </transition>
@@ -14,8 +14,8 @@
 </template>
 
 <script>
-import { title } from '@/project-config'
-import variables from '@/styles/variables.scss'
+import config from '@/project-config'
+// import variables from '@/styles/variables.scss'
 
 export default {
   name: 'SidebarLogo',
@@ -27,13 +27,15 @@ export default {
   },
   data () {
     return {
-      title: title,
+      title: config.title,
       logo: true
     }
   },
   computed: {
     variables () {
-      return variables
+      return {
+        logoBgColor: '#1284f0'
+      }
     }
   }
 }

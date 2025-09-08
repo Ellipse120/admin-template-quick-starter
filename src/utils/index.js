@@ -1,9 +1,9 @@
-import { format, toDate, formatDistanceToNowStrict } from 'date-fns'
+import { format, formatDistanceToNowStrict, parseISO } from "date-fns";
 import zhLocale from 'date-fns/locale/zh-CN/index'
 
 import { v4 as uuidv4 } from 'uuid'
 
-const crypto = require('crypto')
+const crypto = await import('node:crypto')
 
 /**
  * Parse the time to string
@@ -30,7 +30,7 @@ export function parseTime (time, cFormat = 'yyyy-MM-dd HH:mm:ss', options) {
   let v
 
   try {
-    v = format(toDate(time), cFormat, {
+    v = format(parseISO(time), cFormat, {
       ...{
         locale: zhLocale
       },

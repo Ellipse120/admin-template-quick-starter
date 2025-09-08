@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import Breadcrumb from '@/components/Breadcrumb'
+import Breadcrumb from '@/components/Breadcrumb/index.vue'
 
 import { AppMain, NavbarNew } from './components'
 
@@ -27,11 +27,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  @import "~@/styles/mixin.scss";
-  @import "~@/styles/variables.scss";
-
   .app-wrapper {
-  @include clearfix;
     position: relative;
     height: 100%;
     width: 100%;

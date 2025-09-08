@@ -1,6 +1,6 @@
 import request from '@/utils/request'
 
-const baseUrl = `${process.env.VUE_APP_LOCAL_BASE_API}/sys/user`
+const baseUrl = `/users`
 
 export function list (params) {
   return request({
@@ -42,7 +42,7 @@ export function remove (id) {
 
 export function organList (params) {
   return request({
-    url: `${process.env.VUE_APP_LOCAL_BASE_API}/sys/organ`,
+    url: `/sys/organ`,
     method: 'get',
     params
   })

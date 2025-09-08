@@ -169,7 +169,7 @@ import { formatText, parseTime } from '@/utils'
 import { list, detail, add, modify, remove, roleDetail } from './api'
 import autoTableHeight from '@/mixins/autoTableHeight'
 import { allRoles, allMenus, setMenuOfRole } from '@/views/menu-management/api'
-import ElTableWrapper from '@/components/ElTableWrapper'
+import ElTableWrapper from '@/components/ElTableWrapper/index.vue'
 
 export default {
   name: 'MenuManagement',

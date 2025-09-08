@@ -16,7 +16,7 @@ export const utilsMixin = {
        *
        * usage: `
        *    nextTick(() => {
-       *      rootInstance.seamlessScrollOfElTableMixin(seamlessScrollOfTableRef.value)
+       *      rootInstance.proxy.seamlessScrollOfElTableMixin(seamlessScrollOfTableRef.value)
        *    })
        * `
        */
@@ -39,8 +39,6 @@ export const utilsMixin = {
 
       boxes?.forEach((el, i) => {
         const dur = duration / boxes.length * (i + 1)
-
-        console.log(-height * (i + 1), height * (boxes?.length - i))
 
         tl
           .to(

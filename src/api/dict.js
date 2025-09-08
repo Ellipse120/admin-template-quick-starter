@@ -1,6 +1,6 @@
 import request from '@/utils/request'
 
-const baseUrl = `${process.env.VUE_APP_LOCAL_BASE_API}/syst/dict/`
+const baseUrl = `/syst/dict/`
 
 /**
  * 获取枚举

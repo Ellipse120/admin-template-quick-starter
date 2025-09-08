@@ -1,7 +1,7 @@
 import request from '@/utils/request'
 
-const baseUrl = `${process.env.VUE_APP_LOCAL_BASE_API}/sys/organ`
-const baseUrlTrains = `${process.env.VUE_APP_LOCAL_BASE_API}/trains`
+const baseUrl = `/sys/organ`
+const baseUrlTrains = `/trains`
 
 export function list (params) {
   return request({

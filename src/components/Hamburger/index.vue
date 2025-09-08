@@ -1,6 +1,6 @@
 <template>
-  <div style="padding: 0 15px;" @click="toggleClick">
-    <el-link><i class="hamburger" :class="isActive ? 'el-icon-s-fold' : 'el-icon-s-unfold'" /></el-link>
+  <div class="p-2.5" @click="toggleClick">
+    <el-link><i class="inline text-4xl cursor-pointer" :class="isActive ? 'el-icon-s-fold' : 'el-icon-s-unfold'" /></el-link>
   </div>
 </template>
 
@@ -21,14 +21,3 @@ export default {
 }
 </script>
 
-<style scoped>
-.hamburger {
-  display: inline-block;
-  vertical-align: middle;
-  font-size: 21px;
-}
-
-.hamburger:hover {
-  cursor: pointer;
-}
-</style>

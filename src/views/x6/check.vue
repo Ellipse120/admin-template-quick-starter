@@ -33,7 +33,6 @@ export default {
   methods: {
     handleCommand (command) {
       this.selectValue = command
-      console.log(this.selectValue)
     }
   }
 }

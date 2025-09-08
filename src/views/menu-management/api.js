@@ -1,6 +1,6 @@
 import request from '@/utils/request'
 
-const baseUrl = `${process.env.VUE_APP_LOCAL_BASE_API}/sys/menu`
+const baseUrl = `/sys/menu`
 
 export function list (params) {
   return request({
@@ -42,14 +42,14 @@ export function remove (id) {
 
 export function allRoles () {
   return request({
-    url: `${process.env.VUE_APP_LOCAL_BASE_API}/sys/role/all`,
+    url: `/sys/role/all`,
     method: 'get'
   })
 }
 
 export function allMenus () {
   return request({
-    url: `${process.env.VUE_APP_LOCAL_BASE_API}/sys/menu/all`,
+    url: `/sys/menu/all`,
     method: 'get'
   })
 }
@@ -61,7 +61,7 @@ export function allMenus () {
  */
 export function setMenuOfRole (data) {
   return request({
-    url: `${process.env.VUE_APP_LOCAL_BASE_API}/sys/role/${data.id}/menu`,
+    url: `/sys/role/${data.id}/menu`,
     method: 'put',
     data: data.data
   })
@@ -69,7 +69,7 @@ export function setMenuOfRole (data) {
 
 export function roleDetail (id) {
   return request({
-    url: `${process.env.VUE_APP_LOCAL_BASE_API}/sys/role/${id}`,
+    url: `/sys/role/${id}`,
     method: 'get'
   })
 }

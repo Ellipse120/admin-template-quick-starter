@@ -1,12 +1,12 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import LayoutOfHorizontal from '@/layout/index'
-import LayoutOfVertical from '@/layout/index-new'
-import { layoutType, layoutOfVertical, layoutOfHorizontal } from '@/project-config'
+import LayoutOfHorizontal from '@/layout/index.vue'
+import LayoutOfVertical from '@/layout/index-new.vue'
+import config from '../project-config'
 
 const checkLayout = () => {
-  if (layoutType === layoutOfHorizontal) return LayoutOfHorizontal
-  if (layoutType === layoutOfVertical) return LayoutOfVertical
+  if (config.layoutType === config.layoutOfHorizontal) return LayoutOfHorizontal
+  if (config.layoutType === config.layoutOfVertical) return LayoutOfVertical
 }
 
 const Layout = checkLayout()
@@ -47,9 +47,9 @@ Vue.use(Router)
 function lazyLoadView (asyncView) {
   const asyncHandler = () => ({
     component: asyncView,
-    loading: require('@/views/loading').default,
+    loading: import('@/views/loading.vue'),
     delay: 4e2, // Default: 200 (milliseconds).
-    error: require('@/views/error').default,
+    error: import('@/views/error.vue'),
     timeout: 4e4 // Default: Infinity (milliseconds). Time before giving up trying to load the component.
   })
 
@@ -69,7 +69,7 @@ function lazyLoadView (asyncView) {
 export const constantRoutes = [
   {
     path: '/login',
-    component: () => lazyLoadView(import('@/views/login/index')),
+    component: () => lazyLoadView(import('@/views/login/index.vue')),
     meta: { title: '登录' },
     hidden: true
   },
@@ -81,14 +81,14 @@ export const constantRoutes = [
       {
         path: '',
         name: 'Dashboard',
-        component: () => lazyLoadView(import('@/views/dashboard/index')),
+        component: () => lazyLoadView(import('@/views/dashboard/index.vue')),
         meta: { title: '首页' }
       }
     ]
   },
   {
     path: '/404',
-    component: () => lazyLoadView(import('@/views/404')),
+    component: () => lazyLoadView(import('@/views/404.vue')),
     hidden: true,
     meta: { title: '404' }
   }
@@ -108,7 +108,7 @@ export const checkPermissionRoutes = [
       {
         path: '',
         name: 'CrudDemo',
-        component: () => lazyLoadView(import('@/views/crud-demo/index')),
+        component: () => lazyLoadView(import('@/views/crud-demo/index.vue')),
         meta: { title: 'CrudDemo' }
       }
     ]
@@ -119,55 +119,49 @@ export const checkPermissionRoutes = [
     name: 'SystemManagement',
     redirect: '/system-management/user-management',
     alwaysShow: true,
-    meta: { title: '系统管理' },
+    meta: { title: 'System Management' },
     children: [
       {
         path: 'user-management',
         name: 'UserManagement',
-        component: () => lazyLoadView(import('@/views/user-management/index')),
-        meta: { title: '用户管理' }
+        component: () => lazyLoadView(import('@/views/user-management/index.vue')),
+        meta: { title: 'User Management' }
       },
       {
         path: 'organization-management',
         name: 'OrganizationManagement',
-        component: () => lazyLoadView(import('@/views/organization-management/index')),
-        meta: { title: '组织机构' }
+        component: () => lazyLoadView(import('@/views/organization-management/index.vue')),
+        meta: { title: 'Organization Management' }
       },
       {
         path: 'menu-management',
         name: 'MenuManagement',
-        component: () => lazyLoadView(import('@/views/menu-management/index')),
-        meta: { title: '菜单管理' }
+        component: () => lazyLoadView(import('@/views/menu-management/index.vue')),
+        meta: { title: 'Menu Management' }
       },
       {
         path: 'dict-management',
         name: 'DictManagement',
-        component: () => lazyLoadView(import('@/views/dict-management/index')),
-        meta: { title: '字典管理' }
+        component: () => lazyLoadView(import('@/views/dict-management/index.vue')),
+        meta: { title: 'Dict Management' }
       },
       {
         path: 'mirage-todos-demo',
         name: 'MirageTodosDemo',
-        component: () => lazyLoadView(import('@/views/mirage-todos-demo/index')),
-        meta: { title: '模拟接口服务 Demo' }
+        component: () => lazyLoadView(import('@/views/mirage-todos-demo/index.vue')),
+        meta: { title: 'Mirage HTTP Mock Demo' }
       },
       {
         path: 'tinymce-demo',
         name: 'TinymceDemo',
-        component: () => lazyLoadView(import('@/views/tinymce-demo/index')),
-        meta: { title: 'Tinymce Demo' }
+        component: () => lazyLoadView(import('@/views/tinymce-demo/index.vue')),
+        meta: { title: 'Tinymce Editor Demo' }
       },
       {
         path: 'charts-demo',
         name: 'ChartsDemo',
-        component: () => lazyLoadView(import('@/views/charts-demo/index')),
+        component: () => lazyLoadView(import('@/views/charts-demo/index.vue')),
         meta: { title: 'ECharts Demo' }
-      },
-      {
-        path: 'filerobot-image-editor-demo',
-        name: 'FilerobotImageEditorDemo',
-        component: () => lazyLoadView(import('@/views/filerobot-image-editor-demo/index')),
-        meta: { title: 'FilerobotImageEditor Demo' }
       },
       {
         path: 'x6-demo',
@@ -177,13 +171,13 @@ export const checkPermissionRoutes = [
           {
             path: '',
             name: 'X6',
-            component: () => lazyLoadView(import('@/views/x6/index')),
+            component: () => lazyLoadView(import('@/views/x6/index.vue')),
             meta: { title: 'Index' }
           },
           {
             path: 'flow',
             name: 'FlowChart',
-            component: () => lazyLoadView(import('@/views/x6/flow')),
+            component: () => lazyLoadView(import('@/views/x6/flow.vue')),
             meta: { title: 'Flow Chart' }
           }
         ]

@@ -1,6 +1,6 @@
 import request from '@/utils/request'
 
-const baseUrl = `${process.env.VUE_APP_LOCAL_BASE_API}/crud-demo`
+const baseUrl = `/crud-demo`
 
 export const list = (params) => {
   return request({

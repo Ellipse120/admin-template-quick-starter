@@ -20,9 +20,9 @@
 </template>
 
 <script>
-import path from 'path'
 import { isExternal } from '@/utils/validate'
-import AppLink from './Link'
+import AppLink from './Link.vue'
+import path from 'path-browserify-esm'
 
 export default {
   name: 'SidebarItemNew',

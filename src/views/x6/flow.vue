@@ -33,12 +33,12 @@
 </template>
 
 <script>
-import { ref, onMounted, watch } from '@vue/composition-api'
+import { ref, onMounted, watch } from 'vue'
 import { Graph, Shape, Addon } from '@antv/x6'
 import '@antv/x6-vue-shape'
 import initData from './initData.json'
-import ElButtonWrapper from '@/components/ElButtonWrapper'
-import Check from './check'
+import ElButtonWrapper from '@/components/ElButtonWrapper/index.vue'
+import Check from './check.vue'
 
 import './shapes'
 
@@ -727,7 +727,7 @@ export default {
             fill: 'rgba(59, 130, 246, 0.5)'
           },
           image: {
-            'xlink:href': require('@/assets/train/train.png')
+            'xlink:href': import('@/assets/train/train.png')
           }
         }
       })

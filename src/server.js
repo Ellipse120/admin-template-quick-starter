@@ -47,7 +47,8 @@ export function makeServer ({ environment = 'development' } = {}) {
       this.timing = 100
 
       // region Todos
-      this.get('/todos', ({ db }) => {
+      this.get('/todos', ({ db }, request) => {
+        console.log(request.params, request.queryParams)
         return {
           code: customResponseCode.success,
           data: db.todos
@@ -146,13 +147,13 @@ export function makeServer ({ environment = 'development' } = {}) {
         return {
           code: customResponseCode.success,
           data: {
-            name: '模拟用户',
-            userName: '模拟用户',
-            loginName: '模拟用户',
+            name: 'Anonymous',
+            userName: 'Anonymous',
+            loginName: 'Anonymous',
             roleList: [{ roleName: 'admin' }],
             menuList: [],
             departmentId: 1,
-            departmentName: '模拟部门'
+            departmentName: 'Anonymous Department'
           }
         }
       })
@@ -166,14 +167,23 @@ export function makeServer ({ environment = 'development' } = {}) {
           }
         }
       })
+      this.get('/sys/organ', ({ db }) => {
+        return {
+          code: customResponseCode.success,
+          data: {
+            total: db.items.length,
+            items: db.items
+          }
+        }
+      })
     }
   })
 
-  server.passthrough(`${process.env.VUE_APP_LOCAL_BASE_API}/**`)
-  server.passthrough(`${process.env.VUE_APP_JIAQIAN_LS_BASE_API}/**`)
-  server.passthrough(`${process.env.VUE_APP_REMOTE_BASE_API}/**`)
+  server.passthrough(`${import.meta.env.VITE_APP_LOCAL_BASE_API}/**`)
+  server.passthrough(`${import.meta.env.VITE_APP_JIAQIAN_LS_BASE_API}/**`)
+  server.passthrough(`${import.meta.env.VITE_APP_REMOTE_BASE_API}/**`)
   server.passthrough(`${window.localStorage.getItem('API_URL')}/**`)
-  // server.logging = false
+  server.logging = false
 
   window.server = server
   return server

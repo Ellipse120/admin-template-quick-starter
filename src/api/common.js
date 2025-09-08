@@ -1,6 +1,6 @@
 import request from '@/utils/request'
 
-const baseUrl = `${process.env.VUE_APP_LOCAL_BASE_API}`
+const baseUrl = ``
 
 const getSelectOptions = (dicType) => {
   return request({

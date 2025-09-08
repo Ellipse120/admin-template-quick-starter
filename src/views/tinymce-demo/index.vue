@@ -11,8 +11,9 @@
 </template>
 
 <script>
-import { ref } from '@vue/composition-api'
-import RichTextEditor from '@/components/RichTextEditor'
+// import { ref } from '@vue/composition-api'
+import { ref } from 'vue'
+import RichTextEditor from '@/components/RichTextEditor/index.vue'
 
 export default {
   name: 'TinymceDemo',

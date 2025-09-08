@@ -17,7 +17,7 @@
 import { mapGetters } from 'vuex'
 
 export default {
-  name: 'AppHeaderUserFunctionality',
+  name: 'HeaderUserInfo',
   data: function () {
     return {
       unreadMessagesCount: 1

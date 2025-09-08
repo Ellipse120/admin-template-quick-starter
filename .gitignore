@@ -13,3 +13,7 @@ tests/**/coverage/
 *.njsproj
 *.sln
 *.log
+
+.env.development
+.env.staging
+.env.production

@@ -44,8 +44,8 @@
       <div slot="header" class="text-center text-green-500">
         JSX Example
       </div>
-
-      <j-s-x />
+      TODO
+<!--      <j-s-x />-->
     </el-card>
   </div>
 </template>
@@ -53,11 +53,11 @@
 <script>
 import cryptoJS from 'crypto-js'
 import { todos, addTodo, deleteTodo } from './api'
-import JSX from './JSX'
+// import JSX from './JSX.vue'
 
 export default {
   name: 'MirageTodos',
-  components: { JSX },
+  // components: { JSX },
   directives: {
     'max-length': {
       update: function (el, binding) {

@@ -5,15 +5,15 @@
       <breadcrumb class="ml-4" />
     </div>
 
-    <div class="flex pr-4">
-      <div class="mr-4"><el-badge type="primary" :value="50"><el-link class="px-4" :underline="false"><i class="el-icon-document" />事项</el-link></el-badge></div>
-      <div class="mr-4"><el-badge type="success" :value="12"><el-link class="px-4" :underline="false"><i class="el-icon-date" />日程</el-link></el-badge></div>
-      <div class="mr-6"><el-badge type="danger" :value="3"><el-link class="px-4" :underline="false"><i class="el-icon-bell" />消息</el-link></el-badge></div>
+    <div class="flex gap-4 pr-4">
+      <div><el-badge type="primary" :value="50"><el-link class="p-2 text-4" :underline="false"><i class="el-icon-document" />事项</el-link></el-badge></div>
+      <div><el-badge type="success" :value="12"><el-link class="p-2 text-4" :underline="false"><i class="el-icon-date" />日程</el-link></el-badge></div>
+      <div><el-badge type="danger" :value="3"><el-link class="p-2 text-4" :underline="false"><i class="el-icon-bell" />消息</el-link></el-badge></div>
       <el-dropdown class="top-4px" trigger="hover">
-        <div class="avatar-wrapper">
-          <i class="el-icon-user user-avatar" />
+        <div>
+          <i class="el-icon-user text-6" />
           <span>{{ userInfo.realName }}</span>
-          <i class="el-icon-caret-bottom" />
+          <i class="el-icon-caret-bottom text-4" />
         </div>
         <el-dropdown-menu slot="dropdown" class="user-dropdown">
           <router-link to="/">
@@ -30,8 +30,8 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import Breadcrumb from '@/components/Breadcrumb'
-import Hamburger from '@/components/Hamburger'
+import Breadcrumb from '@/components/Breadcrumb/index.vue'
+import Hamburger from '@/components/Hamburger/index.vue'
 
 export default {
   components: {
@@ -52,17 +52,13 @@ export default {
 
     async logout () {
       await this.$store.dispatch('user/logout')
-      this.$router.push(`/login?redirect=${this.$route.fullPath}`)
+      await this.$router.push(`/login?redirect=${this.$route.fullPath}`)
     }
   }
 }
 </script>
 
-<style lang="scss" scoped>
-@import "~@/styles/variables.scss";
-
-$boxItemBgColor: red;
-
+<style scoped>
 .flex {
   display: flex;
 }

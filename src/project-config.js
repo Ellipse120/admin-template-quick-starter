@@ -2,9 +2,9 @@ const layoutOfHorizontal = 'h' // 左右布局
 
 const layoutOfVertical = 'v' // 上下布局
 
-module.exports = {
+export default {
 
-  title: 'xx管理系统',
+  title: 'Admin Template Quick Starter',
 
   subTitle: 'xx-admin-system',
 
@@ -36,5 +36,5 @@ module.exports = {
   /**
    * default two type layout
    */
-  layoutType: layoutOfVertical
+  layoutType: layoutOfHorizontal
 }

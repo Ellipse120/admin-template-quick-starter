@@ -94,7 +94,7 @@ import cloneDeep from 'lodash/cloneDeep'
 import { mapState } from 'vuex'
 import { getList, addItem, modifyItem, getDictTypes } from './api'
 import autoTableHeight from '@/mixins/autoTableHeight'
-import ElTableWrapper from '@/components/ElTableWrapper'
+import ElTableWrapper from '@/components/ElTableWrapper/index.vue'
 
 export default {
   name: 'DictManagement',

@@ -1,10 +1,7 @@
 <template>
   <div>
     <button
-      bg="blue-400 hover:blue-600"
-      text="sm white"
-      p="2"
-      border="4 rounded blue-200"
+      class="cursor-pointer bg-blue-400 hover:bg-blue-600 text-sm text-white p-2 border-4 rounded border-blue-200"
       @click="visible = !visible"
     >
       WindiCSS Attributify Button
@@ -56,12 +53,14 @@
         <div class="gsap2 text-4xl inline-block">🤔</div>
       </div>
 
-      <svg-icon
-        icon-class="tree"
-        class-name="stroke-2 text-green-600 text-5xl cursor-pointer inline"
-        @click="doTransform"
-      />
-      <div class="gsap-test inline-block text-4xl">😍</div>
+      <div class="flex gap-2 align-items-center justify-start">
+        <div
+          class="i-material-symbols-account-tree-outline-rounded text-red-600 text-4xl cursor-pointer"
+          @click="doTransform"
+        />
+
+        <div class="gsap-test inline-block text-4xl">😍</div>
+      </div>
     </el-card>
 
     <div ref="words" class="border-4 border-dashed rounded-3xl border-purple-700 my-2 p-4">
@@ -75,16 +74,18 @@
     </div>
     <el-button type="success" @click="doReplayDemo">RePlay Demo</el-button>
 
-    <div ref="el" class="border-dashed border-4 border-purple-600 fixed cursor-pointer p-4 rounded select-none" :style="style"> Drag Me!!! {{ style }}! Position: {{ fx }} {{ fy }}</div>
+    <div ref="el" class="border-dashed border-4 border-purple-600 fixed cursor-pointer p-4 rounded select-none" :style="style">
+      Drag Me!!! {{ style }}! Position: {{ fx }} {{ fy }}
+    </div>
   </div>
 </template>
 
 <script>
 import { useMouse, useDraggable } from '@vueuse/core'
-import { ref, onMounted } from '@vue/composition-api'
+import { ref, onMounted, getCurrentInstance } from 'vue'
 import { gsap } from 'gsap'
 import { TextPlugin } from 'gsap/TextPlugin'
-import ElTableWrapper from '@/components/ElTableWrapper'
+import ElTableWrapper from '@/components/ElTableWrapper/index.vue'
 
 gsap.registerPlugin(TextPlugin)
 
@@ -93,8 +94,8 @@ export default {
   components: {
     ElTableWrapper
   },
-  setup (_, context) {
-    const rootInstance = context.root
+  setup () {
+    const rootInstance = getCurrentInstance()
     const visible = ref(false)
     const { x, y } = useMouse()
     const tmp = ref(null)
@@ -114,7 +115,7 @@ export default {
       }
     }))
     const { x: fx, y: fy, style } = useDraggable(el, {
-      initialValue: { x: 80, y: 80 }
+      initialValue: { x: 280, y: 380 }
     })
 
     let timeline = null
@@ -174,7 +175,7 @@ export default {
     }
 
     onMounted(() => {
-      rootInstance.seamlessScrollOfElTableMixin(seamlessScrollTableRef.value)
+      rootInstance.proxy.seamlessScrollOfElTableMixin(seamlessScrollTableRef.value)
 
       machineGun()
       timeline = gsap.timeline({ paused: true })

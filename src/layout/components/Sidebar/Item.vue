@@ -15,17 +15,21 @@ export default {
   render (h, context) {
     const { icon, title } = context.props
     const vNodes = []
+    console.log(icon)
 
     if (icon) {
       if (icon.includes('el-icon')) {
-        vNodes.push(<i class={[icon, 'sub-el-icon']} />)
+        vNodes.push(h('i', { class: `${[icon, 'sub-el-icon']}` }, title))
       } else {
-        vNodes.push(<svg-icon icon-class={icon}/>)
+        vNodes.push(h('div', {
+          class: `i-material-symbols-menu-rounded`
+        }, title))
       }
     }
 
     if (title) {
-      vNodes.push(<span slot='title' title={title}>{(title)}</span>)
+      // vNodes.push(<span slot='title' title={title}>{(title)}</span>)
+      vNodes.push(h('span', { class: `${title}` }, title))
     }
     return vNodes
   }

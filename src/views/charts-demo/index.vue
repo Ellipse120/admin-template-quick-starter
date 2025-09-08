@@ -36,7 +36,7 @@
 <script>
 import { eachYearOfInterval, subYears } from 'date-fns'
 import random from 'lodash/random'
-import EChartsWrapper from '@/components/EChartsWrapper'
+import EChartsWrapper from '@/components/EChartsWrapper/index.vue'
 
 export default {
   name: 'ChartsDemo',

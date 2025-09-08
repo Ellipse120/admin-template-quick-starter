@@ -1,5 +1,5 @@
 <template>
-  <el-header style="padding: 0; height: 56px;">
+  <el-header class="p-0">
     <div class="flex h-56px bg-header items-center justify-between">
       <router-link to="/">
         <div class="flex items-center text-white">
@@ -31,13 +31,13 @@
 </template>
 
 <script>
-import { title } from '@/project-config.js'
-import path from 'path'
+import config from '../../project-config'
+import path from 'path-browserify-esm'
 import { mapGetters } from 'vuex'
-import SidebarItemNew from './Sidebar/SidebarItemOfVertical'
-import variables from '@/styles/variables.scss'
+import SidebarItemNew from './Sidebar/SidebarItemOfVertical.vue'
+// import variables from '@/styles/variables.scss'
 import { isExternal } from '@/utils/validate'
-import HeaderUser from './Sidebar/Header'
+import HeaderUser from './Sidebar/Header.vue'
 
 export default {
   name: 'NavBar',
@@ -47,7 +47,7 @@ export default {
   },
   data () {
     return {
-      title,
+      title: config.title,
       onlyOneChild: null,
       activeIndex: '1',
       activeIndex2: '1'
@@ -65,7 +65,11 @@ export default {
       return path
     },
     variables () {
-      return variables
+      return {
+        menuBg: '#0f4c81',
+        menuActiveText: '#0079fe',
+        menuText: '#ffffff'
+      }
     }
   },
   methods: {
@@ -107,6 +111,6 @@ export default {
 
 <style scoped>
   .logo {
-    background-image: url('~@/assets/images/logo.png');
+    background-image: url('@/assets/images/logo.png');
   }
 </style>

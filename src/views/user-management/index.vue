@@ -5,7 +5,7 @@
         <el-input v-model="query.loginName" clearable placeholder="请输入登录名" title="登录名" />
       </el-col>
       <el-col :xs="12" :sm="6" :md="6" :lg="4" :xl="4">
-        <el-input v-model="query.username" clearable placeholder="请输入用户名" title="用户名" />
+        <el-input v-model="query.author" clearable placeholder="请输入用户名" title="用户名" />
       </el-col>
       <el-col :xs="12" :sm="6" :md="6" :lg="4" :xl="4">
         <el-input v-model="query.email" clearable placeholder="请输入邮箱" title="邮箱" />
@@ -29,9 +29,9 @@
     >
       <el-table-column type="index" label="序号" align="center" width="80" />
       <el-table-column label="用户ID" prop="id" align="center" />
-      <el-table-column label="登陆名" prop="loginName" align="center" />
-      <el-table-column label="用户名" prop="username" align="center" />
-      <el-table-column label="部门" prop="departmentName" align="center" min-width="130" />
+      <el-table-column label="登陆名" prop="title" align="center" />
+      <el-table-column label="用户名" prop="author" align="center" />
+      <el-table-column label="部门" prop="author" align="center" min-width="130" />
       <el-table-column prop="roleKvs" align="center" label="角色" min-width="220">
         <template slot-scope="{ row }">
           {{ row.roleKvs ? row.roleKvs.map(o => o.value).toString() : '' }}
@@ -41,12 +41,12 @@
       <el-table-column label="邮箱" prop="email" align="center" />
       <el-table-column label="电话" prop="mobile" align="center" />
       <el-table-column type="expand" label="详情" align="center" width="80">
-        <template slot-scope="{ row }">
+        <template v-slot="{ row }">
           <el-descriptions :column="4" class="px-4">
-            <el-descriptions-item label="创建人">{{ row.createBy }}</el-descriptions-item>
-            <el-descriptions-item label="创建时间">{{ formatTimeMixin(row.createTime) }}</el-descriptions-item>
-            <el-descriptions-item label="更新人">{{ row.updateBy }}</el-descriptions-item>
-            <el-descriptions-item label="更新时间">{{ formatTimeMixin(row.updateTime) }}</el-descriptions-item>
+            <el-descriptions-item label="创建人">{{ row.author }}</el-descriptions-item>
+            <el-descriptions-item label="创建时间">{{ formatTimeMixin(row.display_time) }}</el-descriptions-item>
+            <el-descriptions-item label="更新人">{{ row.author }}</el-descriptions-item>
+            <el-descriptions-item label="更新时间">{{ formatTimeMixin(row.display_time) }}</el-descriptions-item>
           </el-descriptions>
         </template>
       </el-table-column>
@@ -84,8 +84,8 @@
         <el-form-item label="登陆名" prop="loginName">
           <el-input v-model="model.loginName" clearable />
         </el-form-item>
-        <el-form-item label="用户名" prop="username">
-          <el-input v-model="model.username" clearable />
+        <el-form-item label="用户名" prop="author">
+          <el-input v-model="model.author" clearable />
         </el-form-item>
         <el-form-item v-if="isAdd" label="密码" prop="password">
           <el-input v-model="model.password" clearable />
@@ -133,12 +133,12 @@
 <script>
 import cloneDeep from 'lodash/cloneDeep'
 import { list, detail, add, modify, remove, setRoles, resetPassword, organList as getAllOrganization } from './api'
-import { passwordPattern, passwordInvalidMessage } from '@/project-config'
+import config from '@/project-config'
 import autoTableHeight from '@/mixins/autoTableHeight'
 import { allRoles } from '@/views/menu-management/api'
-import ElTableWrapper from '@/components/ElTableWrapper'
-import ElButtonWrapper from '@/components/ElButtonWrapper'
-import OperationBtnGroups from '@/components/OperationsWrapper'
+import ElTableWrapper from '@/components/ElTableWrapper/index.vue'
+import ElButtonWrapper from '@/components/ElButtonWrapper/index.vue'
+import OperationBtnGroups from '@/components/OperationsWrapper/index.vue'
 
 export default {
   name: 'UserManagement',
@@ -148,13 +148,13 @@ export default {
     return {
       query: {
         loginName: null,
-        username: null,
+        author: null,
         email: null,
         mobile: null
       },
       defaultQuery: {
         loginName: null,
-        username: null,
+        author: null,
         email: null,
         mobile: null
       },
@@ -174,9 +174,9 @@ export default {
         dataPermList: null,
         deleted: null,
         departmentId: null,
-        email: null,
+        title: null,
         id: null,
-        loginName: null,
+        author: null,
         menuList: null,
         mobile: null,
         newPassword: null,
@@ -186,7 +186,6 @@ export default {
         status: null,
         updateBy: null,
         updateTime: null,
-        username: null,
         subDepart: null
       },
       defaultModel: {
@@ -196,9 +195,9 @@ export default {
         dataPermList: null,
         deleted: null,
         departmentId: null,
-        email: null,
+        title: null,
         id: null,
-        loginName: null,
+        author: null,
         menuList: null,
         mobile: null,
         newPassword: null,
@@ -208,12 +207,11 @@ export default {
         status: null,
         updateBy: null,
         updateTime: null,
-        username: null,
         subDepart: null
       },
       rules: {
         loginName: [{ required: true, message: '不能为空', trigger: 'blur' }],
-        username: [{ required: true, message: '不能为空', trigger: 'blur' }],
+        author: [{ required: true, message: '不能为空', trigger: 'blur' }],
         password: [{ required: true, message: '不能为空', trigger: 'blur' }],
         mobile: [{ required: true, message: '不能为空', trigger: 'blur' }],
         departmentId: [{ required: true, message: '不能为空', trigger: 'change' }]
@@ -299,8 +297,8 @@ export default {
       this.$prompt(`请输入【 ${scope.row.loginName}】重置后密码`, '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
-        inputPattern: passwordPattern,
-        inputErrorMessage: passwordInvalidMessage,
+        inputPattern: config.passwordPattern,
+        inputErrorMessage: config.passwordInvalidMessage,
         closeOnPressEscape: false,
         closeOnClickModal: false
       })

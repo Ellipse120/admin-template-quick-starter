@@ -3,7 +3,7 @@ to: src/views/<%= name %>/api.js
 ---
 import request from '@/utils/request'
 
-const baseUrl = `${process.env.VUE_APP_LOCAL_BASE_API}/<%= name %>`
+const baseUrl = `/<%= name %>`
 
 export const list = (params) => {
   return request({

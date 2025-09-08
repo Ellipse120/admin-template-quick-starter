@@ -7,8 +7,8 @@ $--color-text-regular: #666666;
 $--color-text-secondary: #262729;
 $--border-color-lighter: #ded7d7;
 
-@import '~element-ui/packages/theme-chalk/src/index.scss';
-@import '~element-ui/lib/theme-chalk/display.css';
+@import '../../node_modules/element-ui/packages/theme-chalk/src/index.scss';
+@import '../../node_modules/element-ui/lib/theme-chalk/display.css';
 
 // cover some element-ui styles
 

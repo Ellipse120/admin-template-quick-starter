@@ -53,7 +53,8 @@ export default {
   data () {
     return {
       contentData: '',
-      localSrc: process.env.NODE_ENV !== 'development' ? process.env.BASE_URL + '/js/tinymce/tinymce.min.js' : '/js/tinymce/tinymce.min.js',
+      // localSrc: process.env.NODE_ENV !== 'development' ? process.env.BASE_URL + '/js/tinymce/tinymce.min.js' : '/js/tinymce/tinymce.min.js',
+      localSrc: !import.meta.env.DEV ? import.meta.env.BASE_URL + '/js/tinymce/tinymce.min.js' : '/js/tinymce/tinymce.min.js',
       defaultOptions: richTextEditorOptions
     }
   },

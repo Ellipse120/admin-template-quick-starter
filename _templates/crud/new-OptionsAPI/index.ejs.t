@@ -72,13 +72,13 @@ to: src/views/<%= name %>/index.vue
 import cloneDeep from 'lodash/cloneDeep'
 import { mapState } from 'vuex'
 import { detail, list, remove, add, modify } from './api'
-import ElTableWrapper from '@/components/ElTableWrapper'
-import ElSelectWrapper from '@/components/ElSelectWrapper'
-import ElButtonWrapper from '@/components/ElButtonWrapper'
-import ElInputWrapper from '@/components/ElInputWrapper'
-import OperationBtnGroups from '@/components/OperationsWrapper'
-import ListSkeleton from '@/components/ListSkeleton'
-import ElPaginationWrapper from '@/components/ElPaginationWrapper'
+import ElTableWrapper from '@/components/ElTableWrapper/index.vue'
+import ElSelectWrapper from '@/components/ElSelectWrapper/index.vue'
+import ElButtonWrapper from '@/components/ElButtonWrapper/index.vue'
+import ElInputWrapper from '@/components/ElInputWrapper/index.vue'
+import OperationBtnGroups from '@/components/OperationsWrapper/index.vue'
+import ListSkeleton from '@/components/ListSkeleton/index.vue'
+import ElPaginationWrapper from '@/components/ElPaginationWrapper/index.vue'
 
 export default {
   name: '<%= h.changeCase.pascal(name) %>',

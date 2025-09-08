@@ -1,39 +1,51 @@
 <script>
+import { defineComponent } from 'vue'
 import random from 'lodash/random'
 
-export default {
-  name: 'JSX',
-  data () {
-    return {
-      options: ['option 1', 'option 2'],
-      list: [],
-      model: {
-        text: '',
-        selectedVal: ''
-      }
-    }
-  },
-  methods: {
-    add () {
-      this.list.push({
-        id: random(1000, 9999),
-        text: this.model.text,
-        selectedVal: this.model.selectedVal
-      })
+const noData = defineComponent({ render() { return <el-empty /> }})
+const listContentItem = defineComponent({
+  props: ['item', 'index'],
+  render() {
+    return <li>
+      <div
+        className="flex flex-row justify-around items-center border-2 my-2 divide-x divide-red-500 divide-x-4 hover:bg-gray-100">
+        <div className="text-red-500 p-2 w-4/5">{this.item.id} - {this.item.text} - {this.item.selectedVal} 🎉🎉🎉</div>
+        <div
+          className="w-1/5 text-center cursor-pointer text-red-500 hover:text-purple-500 transition-all duration-2000"
+          vOn:click={() => this.delete(this.index)}>Del
+        </div>
+      </div>
+    </li>;
+  }
+})
+
+export default defineComponent({
+    name: "JSX",
+    data() {
+      return {
+        options: ["option 1", "option 2"],
+        list: [],
+        model: {
+          text: "",
+          selectedVal: ""
+        }
+      };
     },
-    delete (index) {
-      this.list.splice(index, 1)
+    methods: {
+      add() {
+        this.list.push({
+          id: random(1000, 9999),
+          text: this.model.text,
+          selectedVal: this.model.selectedVal
+        });
+      },
+      delete(index) {
+        this.list.splice(index, 1)
     }
   },
   render () {
-    const noData = <el-empty />
     const listContent = this.list.map((item, index) => {
-      return <li>
-        <div class='flex flex-row justify-around items-center border-2 my-2 divide-x divide-red-500 divide-x-4 hover:bg-gray-100'>
-          <div class='text-red-500 p-2 w-4/5'>{item.id} - {item.text} - {item.selectedVal} 🎉🎉🎉</div>
-          <div class='w-1/5 text-center cursor-pointer text-red-500 hover:text-purple-500 transition-all duration-2000' vOn:click={() => this.delete(index)}>Del</div>
-        </div>
-      </li>
+      return <listContentItem item={item} index={index} />
     })
     const l = this.list.length ? listContent : noData
 
@@ -58,4 +70,4 @@ export default {
     )
   }
 }
-</script>
+)</script>

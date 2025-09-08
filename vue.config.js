@@ -9,13 +9,13 @@ function resolve (dir) {
 
 const name = defaultSettings.title
 
-const port = process.env.port || process.env.npm_config_port || 8000
+const port = import.meta.env.port || import.meta.env.npm_config_port || 8000
 const version = require('./package.json').version
 const copyright = require('./package.json').copyright
 const webpack = require('webpack')
 
-const isProd = process.env.NODE_ENV === 'production'
-const isDev = process.env.NODE_ENV === 'development'
+const isProd = import.meta.env.NODE_ENV === 'production'
+const isDev = import.meta.env.NODE_ENV === 'development'
 
 module.exports = {
   /**
@@ -25,7 +25,7 @@ module.exports = {
    * In most cases please use '/' !!!
    * Detail: https://cli.vuejs.org/config/#publicpath
    */
-  publicPath: process.env.VUE_APP_CI_PROJECT_NAME,
+  publicPath: import.meta.env.VITE_APP_CI_PROJECT_NAME,
   outputDir: 'dist',
   assetsDir: 'static',
   lintOnSave: isDev,

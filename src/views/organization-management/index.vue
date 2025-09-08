@@ -117,8 +117,8 @@ import { list, detail, add, modify, remove, trainKVList } from './api'
 import { getAllOrganizations } from '@/api/common'
 import autoTableHeight from '@/mixins/autoTableHeight'
 import { setDataPermission } from '@/views/organization-management/api'
-import ElButtonWrapper from '@/components/ElButtonWrapper'
-import ElTableWrapper from '@/components/ElTableWrapper'
+import ElButtonWrapper from '@/components/ElButtonWrapper/index.vue'
+import ElTableWrapper from '@/components/ElTableWrapper/index.vue'
 
 export default {
   name: 'OrganizationManagement',

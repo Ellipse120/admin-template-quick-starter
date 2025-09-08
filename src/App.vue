@@ -6,7 +6,8 @@
 
 <script>
 import * as utils from '@/utils'
-import { provide } from '@vue/composition-api'
+// import { provide } from '@vue/composition-api'
+import { provide } from 'vue'
 import { Message, MessageBox, Notification, Loading } from 'element-ui'
 
 export default {
