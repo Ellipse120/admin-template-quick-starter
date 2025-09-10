@@ -6,7 +6,7 @@ export default {
 
   title: 'Admin Template Quick Starter',
 
-  subTitle: 'xx-admin-system',
+  subTitle: 'Admin System',
 
   passwordPattern: '^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$',
 
@@ -36,5 +36,5 @@ export default {
   /**
    * default two type layout
    */
-  layoutType: layoutOfHorizontal
+  layoutType: layoutOfVertical
 }

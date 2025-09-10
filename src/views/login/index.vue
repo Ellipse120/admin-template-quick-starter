@@ -1,12 +1,10 @@
 <template>
   <div class="login-container">
-    <!-- <particles-bg :key="typeModel" :type="typeModel" :config="config" :bg="true" /> -->
-
     <el-form
       ref="loginForm"
       :model="loginForm"
       :rules="loginRules"
-      class="login-form w-full mx-4 2xl:w-1/4 sm:w-1/2"
+      class="login-form w-full mx-4 2xl:w-1/3"
       auto-complete="on"
       label-position="left"
     >
@@ -50,17 +48,11 @@
 </template>
 
 <script>
-// import { title, subTitle, passwordPattern, passwordInvalidMessage } from '@/project-config.js'
 import config from '@/project-config.js'
-// import { ParticlesBg } from 'particles-bg-vue'
-import icon from './icon'
 import confetti from 'canvas-confetti'
-
-// import { md5 } from '@/utils'
 
 export default {
   name: 'Login',
-  // components: { ParticlesBg },
   data () {
     return {
       loginForm: {
@@ -78,36 +70,6 @@ export default {
       subTitle: config.subTitle,
       env: import.meta.env.VITE_APP_ENV_NAME,
       userDialogVisible: false,
-      config: {
-        num: [4, 7],
-        rps: 0.1,
-        radius: [5, 40],
-        life: [1.5, 3],
-        v: [2, 3],
-        tha: [-30, 30],
-        body: icon,
-        // body: 'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/285/smiling-face-with-hearts_1f970.png',
-        alpha: [0.6, 0],
-        scale: [0.1, 0.4],
-        position: 'all',
-        cross: 'dead',
-        random: 15
-      },
-      typeModel: 'random',
-      types: [
-        'color',
-        'ball',
-        'lines',
-        'thick',
-        'circle',
-        'cobweb',
-        'polygon',
-        'square',
-        'tadpole',
-        'fountain',
-        'random',
-        'custom'
-      ]
     }
   },
   watch: {
@@ -129,7 +91,6 @@ export default {
 
           this.loading = true
           const data = Object.assign({}, this.loginForm)
-          // data.password = md5(data.password)
           this.$store.dispatch('user/login', data).then(() => {
             this.$router.push({ path: this.redirect || '/file/maintenance-process/process-flow' }).catch(() => {})
             this.loading = false
@@ -141,49 +102,6 @@ export default {
           return false
         }
       })
-    },
-
-    generateConfetti () {
-      confetti()
-
-      confetti({
-        particleCount: 7,
-        angle: 60,
-        spread: 55,
-        origin: { x: 0 }
-      })
-
-      confetti({
-        particleCount: 7,
-        angle: 120,
-        spread: 55,
-        origin: { x: 1 }
-      })
-
-      // const duration = 30 * 1000
-      // const end = Date.now() + duration;
-      //
-      // (function frame () {
-      //   // launch a few confetti from the left edge
-      //   confetti({
-      //     particleCount: 7,
-      //     angle: 60,
-      //     spread: 55,
-      //     origin: { x: 0 }
-      //   })
-      //   // and launch a few from the right edge
-      //   confetti({
-      //     particleCount: 7,
-      //     angle: 120,
-      //     spread: 55,
-      //     origin: { x: 1 }
-      //   })
-      //
-      //   // keep going until we are out of time
-      //   if (Date.now() < end) {
-      //     requestAnimationFrame(frame)
-      //   }
-      // }())
     }
   }
 }
@@ -200,9 +118,6 @@ $bgColor: #409eff;
   display: flex;
   align-content: center;
   justify-content: center;
-  //background: $bgColor;
-  //background: $bgColor url("../../assets/login-bg.png") no-repeat left bottom;
-  //background-size: cover;
 
   .login-form {
     align-self: center;

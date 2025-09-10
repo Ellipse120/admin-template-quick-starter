@@ -13,7 +13,7 @@ export default defineConfig({
       },
       {
         find: 'vue',
-        replacement: 'vue/dist/vue.esm.js',
+        replacement: 'vue/dist/vue.esm.js'
       }
     ]
   },
